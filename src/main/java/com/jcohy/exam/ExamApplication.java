@@ -5,12 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.servlet.MultipartConfigElement;
 
 @SpringBootApplication
-public class ExamApplication extends WebMvcConfigurerAdapter {
+public class ExamApplication implements WebMvcConfigurer{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExamApplication.class, args);
@@ -46,6 +47,8 @@ public class ExamApplication extends WebMvcConfigurerAdapter {
 		registry.addViewController("/admin/check/index").setViewName("/admin/check/index");
 
 		registry.addViewController("/admin/school/index").setViewName("/admin/school/index");
+
+		registry.addViewController("/admin/profession/index").setViewName("/admin/profession/index");
 
 		registry.addViewController("/college/addreq/index").setViewName("/college/addreq/index");
 

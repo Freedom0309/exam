@@ -94,7 +94,7 @@
                         <a href="javascript:;"><i class="fa fa-user"></i>学校信息</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/school/index" data-id="8">学校信息管理</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/check/index" data-id="9">专业信息管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/profession/index" data-id="9">专业信息管理</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
@@ -121,10 +121,10 @@
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
                         <p style="padding: 10px 15px; margin-bottom: 20px; margin-top: 10px; border:1px solid #ddd;display:inline-block;">
-                            西安工业大学招聘管理系统
+                            陕西高考志愿填报信息管理平台
                             <span style="padding-left:1em;">用户帐号：${Session.user.num?c}</span>
                             <span style="padding-left:1em;">用户姓名：${Session.user.name}</span>
-                            <span style="padding-left:1em;">角色：${Session.role}</span>
+                            <#--<span style="padding-left:1em;">角色：${Session.role}</span>-->
                         </p>
                     </div>
                 </div>

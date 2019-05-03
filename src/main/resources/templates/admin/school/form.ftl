@@ -69,7 +69,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">学校网址</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="url" lay-verify="required" placeholder="请输入网址" value="${school.url}"
+                            <input type="url" name="url" lay-verify="required" placeholder="请输入网址" value="${school.url}"
                                    autocomplete="off" class="layui-input">
 
                         </div>

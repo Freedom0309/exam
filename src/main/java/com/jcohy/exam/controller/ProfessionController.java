@@ -16,14 +16,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/school")
-public class SchoolController extends BaseController {
+@RequestMapping("/profession")
+public class ProfessionController extends BaseController {
 
     @Autowired
     private CollegeService collegeService;
 
     @Autowired
-    private SchoolService schoolService;
+    private ProfessionService professionService;
 
     @Autowired
     private JobService jobService;
@@ -40,20 +40,20 @@ public class SchoolController extends BaseController {
 
     @GetMapping("/form")
     public String form(@RequestParam(required = false) Integer id, ModelMap map) {
-        List<School> schools = schoolService.findAll();
-        map.put("schools", schools);
+        List<Profession> professions = professionService.findAll();
+        map.put("professions", professions);
         if (id != null) {
-            School school = schoolService.findById(id);
-            map.put("school", school);
+            Profession profession = professionService.findById(id);
+            map.put("profession", profession);
         }
-        return "admin/school/form";
+        return "admin/profession/form";
     }
 
     @PostMapping("/save")
     @ResponseBody
-    public JsonResult save(School school) {
+    public JsonResult save(Profession profession) {
         try {
-            schoolService.saveOrUpdate(school);
+            professionService.saveOrUpdate(profession);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.fail(e.getMessage());
@@ -68,22 +68,22 @@ public class SchoolController extends BaseController {
      */
     @GetMapping("/list")
     @ResponseBody
-    public PageJson<School> all() {
+    public PageJson<Profession> all() {
         PageRequest pageRequest = getPageRequest();
-        Page<School> schools = schoolService.findAll(pageRequest);
-        PageJson<School> page = new PageJson<>();
+        Page<Profession> professions = professionService.findAll(pageRequest);
+        PageJson<Profession> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(schools.getSize());
-        page.setData(schools.getContent());
+        page.setCount(professions.getSize());
+        page.setData(professions.getContent());
         return page;
     }
 
     @DeleteMapping("/del/{id}")
     @ResponseBody
-    public JsonResult deleteSchool(@PathVariable("id") Integer id) {
+    public JsonResult deleteProfession(@PathVariable("id") Integer id) {
         try {
-            schoolService.delete(id);
+            professionService.delete(id);
             return JsonResult.ok("删除成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -95,14 +95,14 @@ public class SchoolController extends BaseController {
     /**
      * 更新学院信息
      *
-     * @param school
+     * @param profession
      * @return
      */
     @PostMapping("/update")
     @ResponseBody
-    public JsonResult update(School school) {
+    public JsonResult update(Profession profession) {
         try {
-            School sch = schoolService.saveOrUpdate(school);
+            Profession sch = professionService.saveOrUpdate(profession);
             return JsonResult.ok().set("data", sch);
         } catch (Exception e) {
             e.printStackTrace();
@@ -138,7 +138,7 @@ public class SchoolController extends BaseController {
     @GetMapping("/getAll")
     public JsonResult getAll() {
         try {
-            List<School> list = schoolService.findAll();
+            List<Profession> list = professionService.findAll();
             return JsonResult.ok().set("data", list);
         } catch (Exception e) {
             e.printStackTrace();
@@ -305,10 +305,10 @@ public class SchoolController extends BaseController {
 
     @GetMapping("/hcList")
     @ResponseBody
-    public PageJson<Requirement> hcList(@SessionAttribute("user") School school, ModelMap map) {
+    public PageJson<Requirement> hcList(@SessionAttribute("user") Profession Profession, ModelMap map) {
         PageRequest pageRequest = getPageRequest();
         Page<Requirement> plans = requirementService.findAll(pageRequest);
-        List<Requirement> list = plans.stream().filter(x -> x.getCollege().getId() == school.getId()).collect(Collectors.toList());
+        List<Requirement> list = plans.stream().filter(x -> x.getCollege().getId() == Profession.getId()).collect(Collectors.toList());
         PageJson<Requirement> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");

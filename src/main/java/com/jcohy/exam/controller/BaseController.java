@@ -18,7 +18,7 @@ public class BaseController {
     @Autowired
     private HttpServletRequest request;
 
-    @Autowired
+//    @Autowired
     private HttpServletResponse response;
 
     protected PageRequest getPageRequest(){
@@ -34,6 +34,7 @@ public class BaseController {
             pageSize = Integer.parseInt(pageSizeStr);
         }
 
-        return new PageRequest(pageNumber, pageSize);
+//        return new PageRequest(pageNumber, pageSize);
+        return PageRequest.of(pageNumber, pageSize);
     }
 }

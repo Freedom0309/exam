@@ -24,20 +24,20 @@
         <div class="carousel_div3"></div>
     </div>
     <div class="login layui-anim layui-anim-up">
-        <h1>西安工业大学招聘系统后台管理系统</h1>
+        <h1>陕西高考志愿填报信息管理平台后台管理系统</h1>
         <form class="layui-form" action="${ctx!}/login" method="post">
             <div class="layui-form-item">
-                <input type="text" name="num" lay-verify="number" placeholder="请输入帐号" autocomplete="off"  value="" class="layui-input">
+                <input type="text" name="num" lay-verify="number" value="110" placeholder="请输入帐号" autocomplete="off"  value="" class="layui-input">
             </div>
             <div class="layui-form-item">
-                <input type="password" name="password" lay-verify="required" placeholder="请输入密码" autocomplete="off" value="" class="layui-input">
+                <input type="password" name="password" value="123456" lay-verify="required" placeholder="请输入密码" autocomplete="off" value="" class="layui-input">
             </div>
 
             <div class="layui-input-block" style="margin-left: 0">
                 <select name="role" lay-verify="">
                     <option value="">请选择一个角色</option>
                     <option value="teacher">学院</option>
-                    <option value="admin">人事处</option>
+                    <option value="admin" selected>人事处</option>
                 </select>
             </div>
             <button class="layui-btn login_btn" lay-submit="" lay-filter="login">登陆系统</button>

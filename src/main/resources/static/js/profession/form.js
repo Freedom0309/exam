@@ -21,7 +21,7 @@
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "/school/save",
+            url: "/profession/save",
             data: data.field,
             success: function(ret){
                 if(ret.isOk){
@@ -42,6 +42,6 @@
         return false;
     });
 
-    exports('school/form', {});
+    exports('profession/form', {});
 });
 
