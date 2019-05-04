@@ -27,14 +27,11 @@
 <body>
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
-    <legend style="text-align:center;">专业管理</legend>
+    <legend style="text-align:center;">批次</legend>
     <div class="layui-inline">
         <div class="layui-input-inline" style="width:auto">
-            <button id="addProfession" class="layui-btn layui-btn-sm">
-                <i class="layui-icon">&#xe654;</i>
-                添加
-            </button>
-            <button class="layui-btn layui-btn-sm" onclick="javascript:location.replace(location.href)">
+            <button id="addSchool" class="layui-btn layui-btn-sm">添加</button>
+            <button class="layui-btn layui-btn-sm"  onclick="javascript:location.replace(location.href)">
                 <i class="layui-icon">&#x1002;</i>
             </button>
         </div>
@@ -43,10 +40,10 @@
 
     <div id="dataContent" class="">
 
-        <table class="layui-hide" id="school" lay-filter="table"></table>
+        <table class="layui-table" id="batch" lay-filter="table"></table>
         <script type="text/html" id="operator">
-            <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
-            <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         </script>
     </div>
 </fieldset>
@@ -57,7 +54,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/'
-    }).use('profession/index');
+    }).use('batch/index');
 </script>
 </body>
 </html>

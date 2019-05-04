@@ -34,68 +34,59 @@
                 <form id="form1" class="layui-form "  lay-filter="form">
 
                     <div class="layui-form-item">
-                        <input type="hidden" name="id"  value="${(school.id)!}" >
+                        <input type="hidden" name="id"  value="${(scoreline.id)!}" >
                     </div>
 
 
                     <div class="layui-form-item" style="margin-top: 10px">
-                        <label class="layui-form-label">学校名称</label>
+                        <label class="layui-form-label">年份</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="name" lay-verify="required"
-                                   placeholder="请输入学校名称" value="${school.name}"
+                            <#if>
+                                <input type="number" name="year" lay-verify="required|number"
+                                       placeholder="请输入年份" value="${scoreline.year?c}"
+                                       autocomplete="off" class="layui-input ">
+                            <#else >
+                                <input type="number" name="year" lay-verify="required|number"
+                                       placeholder="请输入年份" value=""
+                                       autocomplete="off" class="layui-input ">
+                            </#if>
+
+                        </div>
+                        <span style="color: red">必填</span>
+                    </div>
+
+                    <div class="layui-form-item" style="margin-top: 10px">
+                        <label class="layui-form-label">批次</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="batchNumber" lay-verify="required"
+                                   placeholder="请输入批次" value="${scoreline.batchNumber}"
                                    autocomplete="off" class="layui-input ">
                         </div>
                         <span style="color: red">必填</span>
                     </div>
 
-                    <div class="layui-form-item" style="margin-top: 10px">
-                        <label class="layui-form-label">学校简介</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="description" lay-verify="required"
-                                   placeholder="请输入简介" value="${school.description}"
-                                   autocomplete="off" class="layui-input ">
-                        </div>
-                        <span style="color: red">必填</span>
-                    </div>
-
                     <div class="layui-form-item">
-                        <label class="layui-form-label">地址</label>
+                        <label class="layui-form-label">分数线</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="address" lay-verify="required"
-                                   placeholder="请输入地址" value="${school.address}"
-                                   autocomplete="off" class="layui-input">
+                            <#if>
+                                <input type="number" name="score" lay-verify="required|number"
+                                       placeholder="请输入分数线" value="${scoreline.score?c}"
+                                       autocomplete="off" class="layui-input">
+                            <#else >
+                                <input type="number" name="score" lay-verify="required|number"
+                                       placeholder="请输入分数线" value=""
+                                       autocomplete="off" class="layui-input">
+                            </#if>
 
-                        </div>
-                        <span style="color: red">必填</span>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">学校网址</label>
-                        <div class="layui-input-inline">
-                            <input type="url" name="url" lay-verify="required|url"
-                                   placeholder="请输入网址" value="${school.url}"
-                                   autocomplete="off" class="layui-input">
 
                         </div>
                         <span style="color: red">必填</span>
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">招生层次</label>
+                        <label class="layui-form-label">文理科</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="level" lay-verify="required"
-                                   placeholder="请输入招生层次" value="${school.level}"
-                                   autocomplete="off" class="layui-input">
-
-                        </div>
-                        <span style="color: red">必填</span>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">学校类型</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="type" lay-verify="required"
-                                   placeholder="请输入学校类型" value="${school.type}"
+                            <input type="text" name="artsScience" lay-verify="required" value="${scoreline.artsScience}"
                                    autocomplete="off" class="layui-input">
 
                         </div>
@@ -132,7 +123,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/'
-    }).use('school/form');
+    }).use('scoreline/form');
 </script>
 </body>
 

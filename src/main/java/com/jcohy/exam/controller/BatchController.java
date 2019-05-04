@@ -1,0 +1,112 @@
+package com.jcohy.exam.controller;
+
+import com.jcohy.exam.common.JsonResult;
+import com.jcohy.exam.common.PageJson;
+import com.jcohy.exam.model.Batch;
+import com.jcohy.exam.service.BatchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/batch")
+public class BatchController extends BaseController {
+
+    @Autowired
+    private BatchService batchService;
+
+
+    @GetMapping("/form")
+    public String form(@RequestParam(required = false) Integer id, ModelMap map) {
+        List<Batch> batchs = batchService.findAll();
+        map.put("batchs", batchs);
+        if (id != null) {
+            Batch batch = batchService.findById(id);
+            map.put("batch", batch);
+        }
+        return "admin/batch/form";
+    }
+
+    @PostMapping("/save")
+    @ResponseBody
+    public JsonResult save(Batch Batch) {
+        try {
+            batchService.saveOrUpdate(Batch);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
+        }
+        return JsonResult.ok();
+    }
+
+    /**
+     * 查询所有批次
+     *
+     * @return
+     */
+    @GetMapping("/list")
+    @ResponseBody
+    public PageJson<Batch> all() {
+        PageRequest pageRequest = getPageRequest();
+        Page<Batch> batchs = batchService.findAll(pageRequest);
+        PageJson<Batch> page = new PageJson<>();
+        page.setCode(0);
+        page.setMsg("成功");
+        page.setCount(batchs.getSize());
+        page.setData(batchs.getContent());
+        return page;
+    }
+
+    @DeleteMapping("/del/{id}")
+    @ResponseBody
+    public JsonResult deleteBatch(@PathVariable("id") Integer id) {
+        try {
+            batchService.delete(id);
+            return JsonResult.ok("删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
+        }
+    }
+
+    /**
+     * 更新批次信息
+     *
+     * @param batch
+     * @return
+     */
+    @PostMapping("/update")
+    @ResponseBody
+    public JsonResult update(Batch batch) {
+        try {
+            Batch sch = batchService.saveOrUpdate(batch);
+            return JsonResult.ok().set("data", sch);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
+        }
+    }
+
+    /**
+     * 获取全部的数据
+     *
+     * @param
+     * @return
+     */
+    @GetMapping("/getAll")
+    public JsonResult getAll() {
+        try {
+            List<Batch> list = batchService.findAll();
+            return JsonResult.ok().set("data", list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
+        }
+    }
+
+}

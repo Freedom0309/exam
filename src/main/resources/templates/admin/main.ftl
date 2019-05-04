@@ -100,8 +100,9 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>分数信息</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/check/index" data-id="10">学校分数线管理</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/check/index" data-id="11">省控线管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/scoreline/index" data-id="10">学校分数线管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/scoreline/index" data-id="11">省控线管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/batch/index" data-id="11">批次管理</a></dd>
                         </dl>
                     </li>
 

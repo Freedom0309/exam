@@ -111,22 +111,7 @@ public class SchoolController extends BaseController {
     }
 
 
-    /**
-     * 发布job
-     *
-     * @param job
-     * @return
-     */
-    @GetMapping("/addJob")
-    public JsonResult addJob(Job job) {
-        try {
-            Job j = jobService.saveOrUpdate(job);
-            return JsonResult.ok("发布成功").set("data", j);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonResult.fail(e.getMessage());
-        }
-    }
+
 
 
     /**

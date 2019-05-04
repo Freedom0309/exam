@@ -6,7 +6,7 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         table = layui.table;
     table.render({
         elem: '#school'
-        , height: 'full-200'
+        , height: 'full-100'
         , method: 'GET'
         , url: '/profession/list' //数据接口
         , page: true //开启分页
@@ -68,7 +68,7 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
                     if (ret.isOk) {
                         layer.msg("删除成功", {time: 2000}, function () {
                             layer.close(index);
-                            window.location.href = "/admin/profession/index";
+                            window.location = window.location.href;
                         });
                     } else {
                         layer.msg(ret.msg, {time: 2000});

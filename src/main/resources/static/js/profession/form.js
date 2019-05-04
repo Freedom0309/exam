@@ -28,11 +28,7 @@
                     layer.msg("操作成功", {time: 2000},function(){
                         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                         parent.layer.close(index);
-                        /*parent.layer.table.reload('schoolTable', {
-                            url: '/school/list'
-                            ,where: {}
-                        })*/
-
+                        parent.location = parent.location.href;
                     });
                 }else{
                     layer.msg(ret.msg, {time: 2000});

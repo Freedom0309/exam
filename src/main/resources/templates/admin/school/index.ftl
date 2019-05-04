@@ -28,28 +28,24 @@
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
     <legend style="text-align:center;">学校管理</legend>
-    <div style="padding: 40px 0px 0px 80px;">
-        <div class="layui-inline">
-            <div class="layui-input-inline" style="width:auto">
-                <button id="addSchool" class="layui-btn layui-btn-normal">添加</button>
-                <button class="layui-btn"  onclick="javascript:location.replace(location.href)">
-                    <i class="layui-icon">&#x1002;</i>
-                </button>
-            </div>
+    <div class="layui-inline">
+        <div class="layui-input-inline" style="width:auto">
+            <button id="addSchool" class="layui-btn layui-btn-sm">添加</button>
+            <button class="layui-btn layui-btn-sm"  onclick="javascript:location.replace(location.href)">
+                <i class="layui-icon">&#x1002;</i>
+            </button>
         </div>
     </div>
 
 
-    <div class="layui-field-box">
-        <div id="dataContent" class="">
+    <div id="dataContent" class="">
 
-            <table class="layui-hide" id="school" lay-filter="table"></table>
-            <script type="text/html" id="operator">
-                <a class="layui-btn" lay-event="edit">编辑</a>
-                <a class="layui-btn" lay-event="addProfession">添加专业</a>
-                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
-            </script>
-        </div>
+        <table class="layui-table" id="school" lay-filter="table"></table>
+        <script type="text/html" id="operator">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs" lay-event="addProfession">添加专业</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
     </div>
 </fieldset>
 
