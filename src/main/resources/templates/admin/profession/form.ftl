@@ -69,8 +69,14 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">平均薪资</label>
                         <div class="layui-input-inline">
-                            <input type="number" name="compensation" lay-verify="number" value="${profession.compensation?c}"
-                                   autocomplete="off" class="layui-input">
+                            <#if profession??>
+                                <input type="number" name="compensation" lay-verify="number" value="${profession.compensation?c}"
+                                       autocomplete="off" class="layui-input">
+                            <#else >
+
+                                <input type="number" name="compensation" lay-verify="number" value="${profession.compensation}"
+                                         autocomplete="off" class="layui-input">
+                            </#if>
                         </div>
                     </div>
 

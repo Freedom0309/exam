@@ -27,10 +27,11 @@
 <body>
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
-    <legend style="text-align:center;">学校管理</legend>
+    <legend style="text-align:center;">${school.name}专业管理</legend>
+    <input type="hidden" name="id" value="${school.id}">
     <div class="layui-inline">
         <div class="layui-input-inline" style="width:auto">
-            <button id="addSchool" class="layui-btn layui-btn-sm">添加</button>
+            <button id="save" class="layui-btn layui-btn-sm">保存</button>
             <button class="layui-btn layui-btn-sm"  onclick="javascript:location.replace(location.href)">
                 <i class="layui-icon">&#x1002;</i>
             </button>
@@ -40,11 +41,10 @@
 
     <div id="dataContent" class="">
 
-        <table class="layui-table" id="school" lay-filter="table"></table>
+        <table class="layui-table" id="profession" lay-filter="table"></table>
         <script type="text/html" id="operator">
             <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-xs" lay-event="addProfession">添加专业</a>
-            <a class="layui-btn layui-btn-xs" lay-event="viewProfession">查看专业</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         </script>
     </div>
@@ -56,7 +56,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/'
-    }).use('school/index');
+    }).use('school/profession');
 </script>
 </body>
 </html>

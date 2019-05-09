@@ -58,4 +58,11 @@ public interface ProfessionService {
      */
     void delete(Integer id);
 
+    /**
+     * 查询学校的专业
+     * @param schoolId 学校id
+     * @return
+     */
+    List<Profession> findProfessionBySchool(Integer schoolId);
+
 }

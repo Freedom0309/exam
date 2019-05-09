@@ -51,7 +51,9 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         } else if (obj.event === 'edit') {
             common.frame_show('编辑', '/school/form?id=' + data.id);
         } else if (obj.event === 'addProfession') {
-            common.frame_show('专业管理', '' + data.id);
+            common.frame_show('专业管理', '/school/profession?id=' + data.id);
+        } else if (obj.event === 'viewProfession') {
+            common.frame_show('专业管理', '/school/pressionBySchool?id=' + data.id);
         }
     });
 

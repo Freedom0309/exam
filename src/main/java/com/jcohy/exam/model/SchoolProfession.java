@@ -16,7 +16,7 @@ public class SchoolProfession implements Serializable {
     @Column(name = "school_id")
     private Integer schoolId;
 
-
+    @Column(name = "profession_id")
     private Integer professionId;
 
 

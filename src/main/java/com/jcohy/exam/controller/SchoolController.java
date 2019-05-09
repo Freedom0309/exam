@@ -1,5 +1,6 @@
 package com.jcohy.exam.controller;
 
+import com.google.gson.Gson;
 import com.jcohy.exam.common.JsonResult;
 import com.jcohy.exam.common.PageJson;
 import com.jcohy.exam.model.*;
@@ -7,6 +8,7 @@ import com.jcohy.exam.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +28,9 @@ public class SchoolController extends BaseController {
     private SchoolService schoolService;
 
     @Autowired
-    private JobService jobService;
+    private SchoolProfessionService schoolProfessionService;
+
+    private ProfessionService professionService;
 
     @Autowired
     private ResumeService resumeService;
@@ -110,8 +114,74 @@ public class SchoolController extends BaseController {
         }
     }
 
+    /**
+     * 添加专业页面
+     * @param id
+     * @param map
+     * @return
+     */
+    @GetMapping("/profession")
+    public String getAllProfession(@RequestParam(required = true) Integer id, ModelMap map){
+
+        School school = schoolService.findById(id);
+        map.put("school", school);
+
+        return "admin/school/profession";
+    }
 
 
+    /**
+     * 给学校下新增专业
+     * @param ids
+     * @param schoolId
+     * @return
+     */
+    @PostMapping("/saveProfession")
+    @ResponseBody
+    public JsonResult saveProfession(@RequestParam("ids") String ids, Integer schoolId){
+
+        ids = ids.substring(1, ids.length() - 1);
+        List<SchoolProfession> professions = new ArrayList<>();
+        String[] strs = ids.split(",");
+        for (int i = 0; i < strs.length; i++) {
+            SchoolProfession schoolProfession = new SchoolProfession();
+            schoolProfession.setProfessionId(Integer.valueOf(strs[i]));
+            schoolProfession.setSchoolId(schoolId);
+            professions.add(schoolProfession);
+        }
+        schoolProfessionService.batchSave(professions);
+
+        return JsonResult.ok();
+    }
+
+    /**
+     * 学校中已有的专业页面
+     * @param id 学校id
+     * @return
+     */
+    @GetMapping("pressionBySchool")
+    public String pressionBySchool(@RequestParam(required = true) Integer id, ModelMap map){
+
+        School school = schoolService.findById(id);
+        map.put("school", school);
+
+        return "admin/school/professionBySchool";
+
+
+    }
+
+    /**
+     * 获取学校下的所有专业
+     * @param id
+     * @return
+     */
+    @GetMapping("getPressionBySchool")
+    @ResponseBody
+    public JsonResult getPressionBySchool(Integer id){
+
+        List<Profession> professions = professionService.findProfessionBySchool(id);
+        return JsonResult.ok().set("data", professions);
+    }
 
 
     /**
@@ -131,40 +201,6 @@ public class SchoolController extends BaseController {
         }
     }
 
-
-    /**
-     * 更改job状态
-     *
-     * @param job
-     * @return
-     */
-    @GetMapping("/updateJob")
-    public JsonResult updateJob(Job job) {
-        try {
-            Job j = jobService.saveOrUpdate(job);
-            return JsonResult.ok("更改成功").set("data", j);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonResult.fail(e.getMessage());
-        }
-    }
-
-    /**
-     * 删除job
-     *
-     * @param job
-     * @return
-     */
-    @GetMapping("/deleteJob")
-    public JsonResult deleteJob(Job job) {
-        try {
-            jobService.delete(job.getId());
-            return JsonResult.ok("删除成功");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonResult.fail(e.getMessage());
-        }
-    }
 
     /**
      * 获取全部投递

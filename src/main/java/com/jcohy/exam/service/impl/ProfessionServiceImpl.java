@@ -67,4 +67,9 @@ public class ProfessionServiceImpl implements ProfessionService {
     public void delete(Integer id) {
         professionRepository.deleteById(id);
     }
+
+    @Override
+    public List<Profession> findProfessionBySchool(Integer schoolId) {
+        return professionRepository.findBySchoolId(schoolId);
+    }
 }
