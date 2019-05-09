@@ -11,10 +11,10 @@ public interface ProfessionRepository extends JpaRepository<Profession,Integer> 
 
     Profession findByName(String name);
 
-    @Query(value = "select p.* from profession p " +
+    /*@Query(value = "select p.* from profession p " +
             "left join school_profession s on s.profession_id = p.id " +
             "where s.school_id = :schoolId",
             nativeQuery = true)
-    List<Profession> findBySchoolId(@Param("schoolId") Integer schoolId);
+    List<Profession> findBySchoolId(@Param("schoolId") Integer schoolId);*/
 
 }

@@ -46,23 +46,9 @@ public interface ProfessionService {
     Profession saveOrUpdate(Profession profession) throws ServiceException;
 
     /**
-     * 检查专业是否存在
-     * @param name 专业名称
-     * @return
-     */
-    boolean checkProfession(String name);
-
-    /**
      * 删除专业
      * @param id
      */
     void delete(Integer id);
-
-    /**
-     * 查询学校的专业
-     * @param schoolId 学校id
-     * @return
-     */
-    List<Profession> findProfessionBySchool(Integer schoolId);
 
 }

@@ -1,6 +1,7 @@
 package com.jcohy.exam.service;
 
 import com.jcohy.exam.exception.ServiceException;
+import com.jcohy.exam.model.Profession;
 import com.jcohy.exam.model.SchoolProfession;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +30,13 @@ public interface SchoolProfessionService {
      * @return
      */
     SchoolProfession findById(Integer id);
+
+    /**
+     * 查询学校的专业
+     * @param schoolId
+     * @return
+     */
+    List<SchoolProfession> findBySchoolId(Integer schoolId);
 
     /**
      * 新增或者更新学院
@@ -61,6 +69,6 @@ public interface SchoolProfessionService {
      * @param schoolId
      * @return
      */
-    List<Object> findProfessionBySchool(Integer schoolId);
+    List<Object[]> findProfessionBySchool(Integer schoolId);
 
 }

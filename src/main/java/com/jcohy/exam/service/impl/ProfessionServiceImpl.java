@@ -34,7 +34,7 @@ public class ProfessionServiceImpl implements ProfessionService {
 
     @Override
     public Profession findByName(String name) {
-        return null;
+        return professionRepository.findByName(name);
     }
 
     /**
@@ -59,17 +59,9 @@ public class ProfessionServiceImpl implements ProfessionService {
     }
 
     @Override
-    public boolean checkProfession(String name) {
-        return false;
-    }
-
-    @Override
     public void delete(Integer id) {
         professionRepository.deleteById(id);
     }
 
-    @Override
-    public List<Profession> findProfessionBySchool(Integer schoolId) {
-        return professionRepository.findBySchoolId(schoolId);
-    }
+
 }

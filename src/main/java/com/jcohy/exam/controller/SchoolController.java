@@ -5,6 +5,7 @@ import com.jcohy.exam.common.JsonResult;
 import com.jcohy.exam.common.PageJson;
 import com.jcohy.exam.model.*;
 import com.jcohy.exam.service.*;
+import com.jcohy.exam.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,7 +15,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -30,6 +33,7 @@ public class SchoolController extends BaseController {
     @Autowired
     private SchoolProfessionService schoolProfessionService;
 
+    @Autowired
     private ProfessionService professionService;
 
     @Autowired
@@ -179,7 +183,37 @@ public class SchoolController extends BaseController {
     @ResponseBody
     public JsonResult getPressionBySchool(Integer id){
 
-        List<Profession> professions = professionService.findProfessionBySchool(id);
+        List<Profession> professions = professionService.findAll();
+        List<Profession> professions2 = professionService.findAll();
+        List<Object[]> professions1 = schoolProfessionService.findProfessionBySchool(id);
+        if(professions2.size() > 0){
+            for (Object[] obj : professions1) {
+                Profession profession = new Profession();
+                profession.setId(Integer.valueOf(obj[0].toString()));
+                profession.setName(obj[1].toString());
+                profession.setDescription(obj[2].toString());
+                profession.setFuture(obj[3].toString());
+                profession.setCompensation(Integer.valueOf(obj[4].toString()));
+                professions2.add(profession);
+            }
+        }
+
+        List<SchoolProfession> schoolProfessions = schoolProfessionService.findBySchoolId(id);
+        List<Profession> lists = new ArrayList<>();
+        Map<Integer, Profession> proMap = new LinkedHashMap<>();
+        for (Profession pro : professions) {
+            proMap.put(pro.getId(), pro);
+        }
+        professions.clear();
+        for (SchoolProfession sp: schoolProfessions) {
+            for (Map.Entry<Integer, Profession> entry : proMap.entrySet()){
+                if (entry.getKey() == sp.getProfessionId()){
+                    professions.add(entry.getValue());
+                    continue;
+                }
+            }
+        }
+//        plans.stream().filter(x -> x.getCollege().getId() == school.getId()).collect(Collectors.toList());
         return JsonResult.ok().set("data", professions);
     }
 
@@ -253,35 +287,6 @@ public class SchoolController extends BaseController {
         return page;
     }
 
-    @GetMapping("/change/{id}")
-    @ResponseBody
-    public JsonResult change(@PathVariable("id") Integer id, String type) {
-        try {
-            deliveryRecordService.changeStatus(id, type);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonResult.fail("修改失败");
-        }
-        return JsonResult.ok();
-    }
-
-    /**
-     * 更新投递记录
-     *
-     * @param deliveryRecord
-     * @return
-     */
-    @GetMapping("/updateDelivery")
-    public JsonResult updateDelivery(DeliveryRecord deliveryRecord) {
-        try {
-            DeliveryRecord delivery = deliveryRecordService.saveOrUpdate(deliveryRecord);
-            return JsonResult.ok("更新成功").set("data", delivery);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonResult.fail(e.getMessage());
-        }
-    }
-
 
     /**
      * 更新简历状态为删除
@@ -305,24 +310,6 @@ public class SchoolController extends BaseController {
         }
     }
 
-
-    /**
-     * 添加一条hc
-     *
-     * @param requirement
-     * @return
-     */
-    @PostMapping("/addHc")
-    @ResponseBody
-    public JsonResult addHc(Requirement requirement) {
-        try {
-            Requirement req = requirementService.saveOrUpdate(requirement);
-            return JsonResult.ok().set("data", req);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonResult.fail(e.getMessage());
-        }
-    }
 
     @GetMapping("/hcList")
     @ResponseBody

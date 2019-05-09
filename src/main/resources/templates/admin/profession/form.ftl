@@ -74,7 +74,7 @@
                                        autocomplete="off" class="layui-input">
                             <#else >
 
-                                <input type="number" name="compensation" lay-verify="number" value="${profession.compensation}"
+                                <input type="number" name="compensation" lay-verify="number" value="0"
                                          autocomplete="off" class="layui-input">
                             </#if>
                         </div>

@@ -1,6 +1,7 @@
 package com.jcohy.exam.service.impl;
 
 import com.jcohy.exam.exception.ServiceException;
+import com.jcohy.exam.model.Profession;
 import com.jcohy.exam.model.SchoolProfession;
 import com.jcohy.exam.respository.SchoolProfessionRepository;
 import com.jcohy.exam.service.SchoolProfessionService;
@@ -33,6 +34,11 @@ public class SchoolProfessionServiceImpl implements SchoolProfessionService {
     }
 
     @Override
+    public List<SchoolProfession> findBySchoolId(Integer schoolId) {
+        return schoolProfessionRepository.findAllBySchoolId(schoolId);
+    }
+
+    @Override
     public SchoolProfession saveOrUpdate(SchoolProfession schoolProfession) throws ServiceException {
         SchoolProfession dbPro = null;
         if (schoolProfession.getId() != null) {
@@ -52,7 +58,7 @@ public class SchoolProfessionServiceImpl implements SchoolProfessionService {
         return schoolProfessionRepository.saveAll(professions);
     }
 
-    public List<Object> findProfessionBySchool(Integer schoolId){
+    public List<Object[]> findProfessionBySchool(Integer schoolId){
         return schoolProfessionRepository.findProfessionBySchool(schoolId);
     }
 
