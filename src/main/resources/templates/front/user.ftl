@@ -183,7 +183,7 @@
                             </div>
 
 
-                            <div class="layui-form-item">
+                            <#--<div class="layui-form-item">
                                 <label class="layui-form-label">上传简历</label>
                                 <div class="layui-input-block">
                                     <button type="button" class="layui-btn" id="upload">
@@ -191,7 +191,7 @@
                                     </button>
                                     <input type="hidden" name="annexUrl">
                                 </div>
-                            </div>
+                            </div>-->
 
                             <div class="layui-form-item">
                                 <div class="layui-input-inline">

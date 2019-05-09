@@ -45,7 +45,7 @@
     <div class="blog-body">
     	<div class="layui-carousel blog-bg" id="carousel">
 		  <div carousel-item>
-		    <div class="bg bg_a"></div>
+		    <div class="bg bg_a">11111111111111111111</div>
 		    <div class="bg bg_b"></div>
 		    <div class="bg bg_c"></div>
 		    <div class="bg bg_d"></div>

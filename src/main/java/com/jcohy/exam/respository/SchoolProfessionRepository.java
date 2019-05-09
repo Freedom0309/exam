@@ -18,7 +18,11 @@ public interface SchoolProfessionRepository extends JpaRepository<SchoolProfessi
         nativeQuery = true)
     List<Object[]> findProfessionBySchool(@Param("schoolId") Integer schoolId);
 
-    List<SchoolProfession> findBySchoolId(Integer schoolId);
+    SchoolProfession findBySchoolIdAndProfessionId(Integer schoolId, Integer professionId);
 
     List<SchoolProfession> findAllBySchoolId(Integer schoolId);
+
+    void deleteBySchoolIdAndProfessionId(Integer schoolId, Integer professionId);
+
+    void deleteBySchoolId(Integer schoolId);
 }

@@ -95,7 +95,6 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
                     if (ret.isOk) {
                         layer.msg("操作成功", {time: 2000}, function () {
                             layer.close(index);
-                            //window.location.href = "/admin/school/index";
                             window.location = window.location.href;
                         });
                     } else {

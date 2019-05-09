@@ -10,9 +10,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class SchoolProfessionServiceImpl implements SchoolProfessionService {
 
     @Autowired
@@ -63,6 +65,21 @@ public class SchoolProfessionServiceImpl implements SchoolProfessionService {
     }
 
     @Override
+    public void deleteBySchoolId(Integer schoolId) {
+        schoolProfessionRepository.deleteBySchoolId(schoolId);
+    }
+
+    @Override
+    public void deleteBySchoolIdAndProfessionId(Integer schoolId, Integer professionId) {
+        schoolProfessionRepository.deleteBySchoolIdAndProfessionId(schoolId, professionId);
+    }
+
+    @Override
+    public SchoolProfession findBySchoolIdAndProfessionId(Integer schoolId, Integer professionId) {
+        return schoolProfessionRepository.findBySchoolIdAndProfessionId(schoolId, professionId);
+    }
+
+    @Override
     public boolean checkProfession(Integer professionId) {
        SchoolProfession schoolProfession =  schoolProfessionRepository.findSchoolProfessionByProfessionId(professionId);
         return schoolProfession != null;
@@ -75,6 +92,11 @@ public class SchoolProfessionServiceImpl implements SchoolProfessionService {
             throw new ServiceException("主键不能为空");
         }
         schoolProfessionRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteInBatch(List<SchoolProfession> schoolProfessions) {
+        schoolProfessionRepository.deleteInBatch(schoolProfessions);
     }
 
 }

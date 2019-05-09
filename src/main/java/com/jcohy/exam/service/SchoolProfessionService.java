@@ -50,7 +50,7 @@ public interface SchoolProfessionService {
      * @param professions
      * @return
      */
-    public List<SchoolProfession> batchSave(List<SchoolProfession> professions);
+    List<SchoolProfession> batchSave(List<SchoolProfession> professions);
     /**
      * 检查专业是否存在
      * @param professionId 专业id
@@ -65,10 +65,36 @@ public interface SchoolProfessionService {
     void delete(Integer id);
 
     /**
+     * 批量删除学校下专业
+     */
+    void deleteInBatch(List<SchoolProfession> schoolProfessions);
+
+    /**
      * 查询学校下的专业
      * @param schoolId
      * @return
      */
     List<Object[]> findProfessionBySchool(Integer schoolId);
+
+    /**
+     * 查找学校和专业的关系
+     * @param schoolId
+     * @param professionId
+     * @return
+     */
+    SchoolProfession findBySchoolIdAndProfessionId(Integer schoolId, Integer professionId);
+
+    /**
+     * 删除学校下的专业
+     * @param schoolId
+     * @param professionId
+     */
+    void deleteBySchoolIdAndProfessionId(Integer schoolId, Integer professionId);
+
+    /**
+     * 删除学校下的所有专业
+     * @param schoolId
+     */
+    void deleteBySchoolId(Integer schoolId);
 
 }
