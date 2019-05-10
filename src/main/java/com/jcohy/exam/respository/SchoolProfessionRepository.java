@@ -25,4 +25,7 @@ public interface SchoolProfessionRepository extends JpaRepository<SchoolProfessi
     void deleteBySchoolIdAndProfessionId(Integer schoolId, Integer professionId);
 
     void deleteBySchoolId(Integer schoolId);
+
+
+
 }

@@ -30,6 +30,7 @@
                     <a id="updatePassword" style="cursor: pointer"><i class="fa fa-power-off fa-fw"></i>修改密码</a>
                     <input type="hidden" value="${Session.user.num?c}" id="num">
                     <input type="hidden" value="${Session.role}" id="role">
+                    <input type="hidden" value="${Session.user.id}" >
                 </li>
                 <li class="ht-nav-item">
                     <a href="${ctx!}/logout"><i class="fa fa-power-off fa-fw"></i>注销</a>
@@ -44,7 +45,7 @@
                         <a href="javascript:;"><i class="fa fa-home"></i>首页</a>
                     </li>
 
-                    <li class="layui-nav-item">
+                    <#--<li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>求职者管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/lab/index" data-id="1">求职者账户管理</a></dd>
@@ -58,7 +59,7 @@
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/addcollege/index" data-id="3">新增学院账户</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/college/index" data-id="4">学院账户管理</a></dd>
                         </dl>
-                    </li>
+                    </li>-->
 
                     <#--<li class="layui-nav-item">-->
                         <#--<a href="javascript:;"><i class="fa fa-user"></i>招聘信息管理</a>-->
@@ -76,7 +77,7 @@
                         </dl>
                     </li>
 
-                    <li class="layui-nav-item">
+                   <#-- <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>审核管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/managereq/index" data-id="5">请求审核</a></dd>
@@ -88,7 +89,7 @@
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/check/index" data-id="7">应聘人员审核</a></dd>
                         </dl>
-                    </li>
+                    </li>-->
 
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>学校信息</a>
@@ -100,9 +101,9 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>分数信息</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/scoreline/index" data-id="10">学校分数线管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/schoolline/index" data-id="10">学校分数线管理</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/scoreline/index" data-id="11">省控线管理</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/batch/index" data-id="11">批次管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/batch/index" data-id="12">批次管理</a></dd>
                         </dl>
                     </li>
 

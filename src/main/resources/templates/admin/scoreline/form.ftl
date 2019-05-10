@@ -41,11 +41,11 @@
                     <div class="layui-form-item" style="margin-top: 10px">
                         <label class="layui-form-label">年份</label>
                         <div class="layui-input-inline">
-                            <#if>
+                            <#if scoreline??>
                                 <input type="number" name="year" lay-verify="required|number"
                                        placeholder="请输入年份" value="${scoreline.year?c}"
                                        autocomplete="off" class="layui-input ">
-                            <#else >
+                            <#else>
                                 <input type="number" name="year" lay-verify="required|number"
                                        placeholder="请输入年份" value=""
                                        autocomplete="off" class="layui-input ">
@@ -68,11 +68,11 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">分数线</label>
                         <div class="layui-input-inline">
-                            <#if>
+                            <#if scoreline??>
                                 <input type="number" name="score" lay-verify="required|number"
                                        placeholder="请输入分数线" value="${scoreline.score?c}"
                                        autocomplete="off" class="layui-input">
-                            <#else >
+                            <#else>
                                 <input type="number" name="score" lay-verify="required|number"
                                        placeholder="请输入分数线" value=""
                                        autocomplete="off" class="layui-input">

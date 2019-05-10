@@ -45,7 +45,7 @@
     </button>
     <div class="layui-row">
         <div class="layui-form layui-col-md12 star-so">
-            <input type="hidden" value="${Session.user.id?c}" id="id">
+            <input type="hidden" value="${Session.user.id}" id="id">
         </div>
     </div>
 

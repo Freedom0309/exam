@@ -45,8 +45,8 @@
         <div class="blog-container">
             <div class="blog-main">
                 <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
-                	<a href="index.ftl" title="网站首页">网站首页</a>
-                	<a href="article.html" title="文章专栏">招聘信息</a>
+                	<a href="/" title="网站首页">网站首页</a>
+                	<#--<a href="article.html" title="文章专栏">招聘信息</a>-->
                 	<a><cite class="title"></cite></a>
            		</blockquote>
                 <!--左边文章列表-->

@@ -62,7 +62,7 @@
                     <div class="layui-form-item" style="margin-top: 10px">
                         <label class="layui-form-label">批次</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="batchNumber" lay-verify="required"
+                            <input type="text" name="batchNumber" lay-verify="required|number"
                                    placeholder="请输入批次" value="${batch.batchNumber}"
                                    autocomplete="off" class="layui-input ">
                         </div>

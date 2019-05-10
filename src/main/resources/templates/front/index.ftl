@@ -148,7 +148,6 @@
 						<div class="blog-module-title">友情链接</div>
 						<ul class="blogroll">
 							<li><a target="_blank" href="http://www.layui.com/" title="Layui">Layui</a></li>
-							<li><a target="_blank" href="http://www.pagemark.cn/" title="页签">页签</a></li>
 						</ul>
 					</div>
                 </div>
