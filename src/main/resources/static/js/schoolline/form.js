@@ -2,21 +2,6 @@
     var form = layui.form,
         $ = layui.jquery;
 
-    //自定义验证
-    form.verify({
-        name: function (value) {
-            if (value.length <= 0 || value.length > 20) {
-                return "名称必须1到00位"
-            }
-        },
-        description:function (value) {
-            if (value.length <= 1 || value.length > 100) {
-                return "描述必须2到00位"
-            }
-        }
-
-    });
-
     form.on('submit(add)', function (data) {
         $.ajax({
             type: "POST",
@@ -39,6 +24,28 @@
         return false;
     });
 
+    form.on('select(school)', function (data) {
+        var id = data.value;
+        $.ajax({
+            url: '/school/getPressionBySchool',
+            data: {
+                id: id
+            },
+            method: 'get',
+            success: function (data) {
+                console.log(data);
+                $('#profession').empty();
+                var opt='';
+                opt += '<option value="">请选择专业</option>';
+                $.each(data.data, function (i, obj) {
+                    opt += '<option value="'+obj.id+'">'+ obj.name +'</option>';
+                });
+                
+                $('#profession').append(opt);
+                form.render();
+            }
+        });
+    });
     exports('scoreline/form', {});
 });
 

@@ -42,13 +42,31 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">学校</label>
                         <div class="layui-input-inline">
-                            <select name="schoolId" lay-filter="requirement" lay-verify="required">
+                            <select name="schoolId" lay-filter="school" lay-verify="required">
                                 <option value="">请选择学校</option>
                         <#list schools as x>
                             <option value="${x.id}"
                                 <#if (schoolLine.schoolId == x.id)> selected="selected" </#if>
                             >${x.name}</option>
                         </#list>
+                            </select>
+                        </div>
+                        <span style="color: red">必填</span>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">专业</label>
+                        <div class="layui-input-inline">
+                            <select name="professionId" id="profession" lay-filter="profession" lay-verify="required">
+                                <option value="">请选择专业</option>
+                                <#if schoolLine.professionId??>
+                                    <#list professions as x>
+                                    <option value="${x.id}"
+                                        <#if (schoolLine.professionId == x.id)> selected="selected" </#if>
+                                    >${x.name}</option>
+                                    </#list>
+                                </#if>
+
                             </select>
                         </div>
                         <span style="color: red">必填</span>
@@ -75,7 +93,8 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">文理科</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="artsScience" lay-verify="required" value="${schoolLine.artsScience}"
+                            <input type="text" name="artsScience" lay-verify="required"
+                                   value="${schoolLine.artsScience}"
                                    autocomplete="off" class="layui-input">
 
                         </div>

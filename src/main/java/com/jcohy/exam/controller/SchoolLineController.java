@@ -2,6 +2,8 @@ package com.jcohy.exam.controller;
 
 import com.jcohy.exam.common.JsonResult;
 import com.jcohy.exam.common.PageJson;
+import com.jcohy.exam.enums.ArtsScience;
+import com.jcohy.exam.model.Profession;
 import com.jcohy.exam.model.School;
 import com.jcohy.exam.model.SchoolLine;
 import com.jcohy.exam.service.ProfessionService;
@@ -39,10 +41,26 @@ public class SchoolLineController extends BaseController {
     @GetMapping("/form")
     public String form(@RequestParam(required = false) Integer id, ModelMap map) {
         List<School> schools = schoolService.findAll();
+        List<Profession> professions = new ArrayList<>();
+
         map.put("schools", schools);
+        map.put("arts", ArtsScience.getList());
+
         if (id != null) {
             SchoolLine schoolLine = schoolLineService.findById(id);
             map.put("schoolLine", schoolLine);
+            List<Object[]> professions1 = schoolProfessionService.findProfessionBySchool(schoolLine.getSchoolId());
+
+            if (professions1.size() > 0) {
+                for (Object[] obj : professions1) {
+                    Profession profession = new Profession();
+                    profession.setId(Integer.valueOf(obj[0].toString()));
+                    profession.setName(obj[1].toString());
+                    professions.add(profession);
+                }
+            }
+            map.put("professions", professions);
+
         }
         return "admin/schoolline/form";
     }
@@ -77,6 +95,7 @@ public class SchoolLineController extends BaseController {
                 schoolLine.setSchoolName(obj[1].toString());
                 schoolLine.setSchoolLine(Integer.valueOf(obj[2].toString()));
                 schoolLine.setArtsScience(obj[3].toString());
+                schoolLine.setProfessionName(obj[4].toString());
                 schoolLines.add(schoolLine);
             }
         }

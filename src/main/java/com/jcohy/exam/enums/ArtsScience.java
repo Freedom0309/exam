@@ -1,5 +1,10 @@
 package com.jcohy.exam.enums;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 public enum ArtsScience implements BaseEnum {
 
     ARTS("文科", "文科"),
@@ -23,6 +28,20 @@ public enum ArtsScience implements BaseEnum {
     @Override
     public String getEnumValue() {
         return this.value;
+    }
+
+    public static List getList(){
+        List<Map<String, String>> lists = new ArrayList<>();
+
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put(ARTS.value, ARTS.cnName);
+
+        lists.add(map);
+        Map<String, String> map1 = new LinkedHashMap<>();
+        map1.put(SCIENCE.value, SCIENCE.cnName);
+        lists.add(map1);
+
+        return lists;
     }
 
 }

@@ -7,10 +7,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Description  :求职者表
+ * Description  :用户表
  */
 @Entity
-@Table(name = "job_seeker")
+@Table(name = "user")
 public class JobSeeker implements Serializable {
 
     private static final long serialVersionUID = 3L;

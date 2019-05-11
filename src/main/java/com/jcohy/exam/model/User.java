@@ -43,6 +43,17 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "num")
+    private Integer num;
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -13,6 +13,7 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         , page: true //开启分页
         , cols: [[ //表头
             {field: 'schoolName', align: 'center', title: '学校', sort: true, unresize: false}
+            , {field: 'professionName', align: 'center', title: '专业', sort: true, unresize: false}
             , {field: 'schoolLine', align: 'center', title: '分数线', sort: true, unresize: false}
             , {field: 'artsScience', align: 'center', title: '文理科', sort: true, unresize: false}
             , {fixed: 'right', title: '操作', align: 'center', width: '300', toolbar: '#operator', unresize: false}
