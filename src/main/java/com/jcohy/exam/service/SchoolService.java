@@ -59,4 +59,10 @@ public interface SchoolService {
      */
     void delete(Integer id);
 
+    /**
+     * 根据名称模糊查询学校
+     * @param name
+     * @return
+     */
+    List<School> findByNameLike(String name);
 }

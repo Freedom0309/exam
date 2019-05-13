@@ -22,7 +22,7 @@
             <!-- 导航菜单 -->
             <ul class="layui-nav" lay-filter="nav">
 				<li class="layui-nav-item layui-this">
-					<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;招聘信息</a>
+					<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;登录信息</a>
 				</li>
 
 				<li class="layui-nav-item">

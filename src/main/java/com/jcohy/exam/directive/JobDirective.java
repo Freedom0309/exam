@@ -1,7 +1,9 @@
 package com.jcohy.exam.directive;
 
 import com.jcohy.exam.model.Job;
+import com.jcohy.exam.model.School;
 import com.jcohy.exam.service.JobService;
+import com.jcohy.exam.service.SchoolService;
 import freemarker.core.Environment;
 import freemarker.template.*;
 import org.slf4j.LoggerFactory;
@@ -23,11 +25,18 @@ public class JobDirective implements TemplateDirectiveModel{
 
     @Autowired
     private JobService jobService;
+
+    @Autowired
+    private SchoolService schoolService;
+
     @Override
     public void execute(Environment environment, Map map, TemplateModel[] templateModels, TemplateDirectiveBody templateDirectiveBody) throws TemplateException, IOException {
         List<Job> list = jobService.findAllByStatus();
+        List<School> schools = schoolService.findAll();
         logger.warn("JobSeeker:{}",list.size());
-        environment.setVariable("list", new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_25).build().wrap(list));
+        logger.warn("School.{}", schools.size());
+//        environment.setVariable("list", new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_25).build().wrap(list));
+        environment.setVariable("list", new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_25).build().wrap(schools));
         if (templateDirectiveBody != null) {
             templateDirectiveBody.render(environment.getOut());
         }

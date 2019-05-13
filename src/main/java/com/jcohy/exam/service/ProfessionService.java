@@ -51,4 +51,11 @@ public interface ProfessionService {
      */
     void delete(Integer id);
 
+    /**
+     * 根据名字模糊专业
+     * @param name
+     * @return
+     */
+    List<Profession> findByNameIsLike(String name);
+
 }

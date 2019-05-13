@@ -21,8 +21,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/school")
 public class SchoolController extends BaseController {
 
-    @Autowired
-    private CollegeService collegeService;
 
     @Autowired
     private SchoolService schoolService;
@@ -33,8 +31,6 @@ public class SchoolController extends BaseController {
     @Autowired
     private ProfessionService professionService;
 
-    @Autowired
-    private ResumeService resumeService;
 
     @Autowired
     private DeliveryRecordService deliveryRecordService;
@@ -308,27 +304,6 @@ public class SchoolController extends BaseController {
     }
 
 
-    /**
-     * 获取全部投递
-     *
-     * @param id 学院id
-     * @return
-     */
-    @GetMapping("/deliverys")
-    public JsonResult findAllDeliverys(Integer id) {
-        List<DeliveryRecord> all = deliveryRecordService.findAll();
-        List<DeliveryRecord> mine = new ArrayList<>();
-        for (DeliveryRecord deliveryRecord : all) {
-            if (deliveryRecord.getJob().getCollege().getId() == id) {
-                if (deliveryRecord.getStatus() != null) {
-                    mine.add(deliveryRecord);
-                }
-            }
-        }
-        return JsonResult.ok("获取成功").set("data", mine);
-    }
-
-
     @GetMapping("/hcList")
     @ResponseBody
     public PageJson<Requirement> hcList(@SessionAttribute("user") School school, ModelMap map) {
@@ -352,5 +327,25 @@ public class SchoolController extends BaseController {
             return JsonResult.fail("删除失败");
         }
         return JsonResult.ok();
+    }
+
+    /**
+     * 查询具体的学校信息
+     * @param id
+     * @param map
+     * @return
+     */
+    @GetMapping("/detail/{id}")
+    public String schoolDetail(@PathVariable Integer id, ModelMap map){
+        School school = schoolService.findById(id);
+        map.put("school", school);
+        return "front/detail";
+    }
+
+    @ResponseBody
+    @GetMapping("/searchSchool")
+    public JsonResult searchSchool(String key){
+        List<School> schools = schoolService.findByNameLike("%" + key + "%");
+        return JsonResult.ok().set("data", schools);
     }
 }

@@ -46,7 +46,7 @@
                                 <option value="">请选择学校</option>
                         <#list schools as x>
                             <option value="${x.id}"
-                                <#if (schoolLine.schoolId == x.id)> selected="selected" </#if>
+                                <#if (schoolLine.school.id == x.id)> selected="selected" </#if>
                             >${x.name}</option>
                         </#list>
                             </select>
@@ -59,10 +59,10 @@
                         <div class="layui-input-inline">
                             <select name="professionId" id="profession" lay-filter="profession" lay-verify="required">
                                 <option value="">请选择专业</option>
-                                <#if schoolLine.professionId??>
+                                <#if schoolLine.profession??>
                                     <#list professions as x>
                                     <option value="${x.id}"
-                                        <#if (schoolLine.professionId == x.id)> selected="selected" </#if>
+                                        <#if (schoolLine.profession.id == x.id)> selected="selected" </#if>
                                     >${x.name}</option>
                                     </#list>
                                 </#if>

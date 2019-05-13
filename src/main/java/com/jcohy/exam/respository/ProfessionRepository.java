@@ -17,4 +17,6 @@ public interface ProfessionRepository extends JpaRepository<Profession,Integer> 
             nativeQuery = true)
     List<Profession> findBySchoolId(@Param("schoolId") Integer schoolId);*/
 
+    List<Profession> findByNameIsLike(String name);
+
 }

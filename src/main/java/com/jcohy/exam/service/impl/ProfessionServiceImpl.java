@@ -63,5 +63,10 @@ public class ProfessionServiceImpl implements ProfessionService {
         professionRepository.deleteById(id);
     }
 
+    @Override
+    public List<Profession> findByNameIsLike(String name) {
+        return professionRepository.findByNameIsLike(name);
+    }
+
 
 }

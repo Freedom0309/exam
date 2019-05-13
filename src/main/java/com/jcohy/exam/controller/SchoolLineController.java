@@ -49,7 +49,7 @@ public class SchoolLineController extends BaseController {
         if (id != null) {
             SchoolLine schoolLine = schoolLineService.findById(id);
             map.put("schoolLine", schoolLine);
-            List<Object[]> professions1 = schoolProfessionService.findProfessionBySchool(schoolLine.getSchoolId());
+            List<Object[]> professions1 = schoolProfessionService.findProfessionBySchool(schoolLine.getSchool().getId());
 
             if (professions1.size() > 0) {
                 for (Object[] obj : professions1) {
@@ -67,8 +67,10 @@ public class SchoolLineController extends BaseController {
 
     @PostMapping("/save")
     @ResponseBody
-    public JsonResult save(SchoolLine schoolLine) {
+    public JsonResult save(SchoolLine schoolLine, Integer schoolId, Integer professionId) {
         try {
+            schoolLine.setSchool(schoolService.findById(schoolId));
+            schoolLine.setProfession(professionService.findById(professionId));
             schoolLineService.saveOrUpdate(schoolLine);
         } catch (Exception e) {
             e.printStackTrace();

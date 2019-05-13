@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; Charset=utf-8">
     <meta http-equiv="Content-Language" content="zh-CN">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <title>招聘信息</title>
+    <title>学校信息</title>
     <link rel="shortcut icon" href="${ctx!}/images/logo.png" type="image/x-icon">
     <!--Layui-->
     <link href="${ctx!}/layui/css/layui.css" rel="stylesheet" />
@@ -26,7 +26,7 @@
             <!-- 导航菜单 -->
             <ul class="layui-nav" lay-filter="nav">
                 <li class="layui-nav-item layui-this">
-                    <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;招聘信息</a>
+                    <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;学校信息</a>
                 </li>
 
                 <li class="layui-nav-item">
@@ -47,10 +47,10 @@
                 <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
                 	<a href="/" title="网站首页">网站首页</a>
                 	<#--<a href="article.html" title="文章专栏">招聘信息</a>-->
-                	<a><cite class="title"></cite></a>
+                	<#--<a><cite class="title"></cite></a>-->
            		</blockquote>
                 <!--左边文章列表-->
-                <div class="blog-main-left animated slideInLeft">
+                <div class="blog-main-left animated slideInLeft" style="width: 100%;">
                 	<!-- 文章内容（使用Kingeditor富文本编辑器发表的） -->
                     <form class="layui-form">
                         <div class="article-detail shadow">
@@ -59,34 +59,21 @@
                                 <input type="hidden" name="id" value="${job.id}">
                             </div>
 
-                            <div class="article-detail-title title">${job.name}  ${job.treatment}/月</a></div>
-                            <div class="article-detail-info">
-                                <span>编辑时间：${job.createTime}</span>
-                                <span>大学： ${job.college.name}</span>
-                                <span>人数： ${job.numbers}</span>
-                            </div>
+                            <div class="article-detail-title title">${school.name}</a></div>
                             <div class="article-detail-sign">
                                 <hr class="layui-bg-gray">
-                                <p>职位：${job.name}</p>
-                                <p>待遇：${job.treatment}</p>
-                                <p>学历：${job.title}</p>
-                                <p>地址：${job.location}</p>
-                                <p>工作经验： ${job.experience}</p>
+                                <p>描述：${school.description}</p>
+                                <p>类型：${school.type}</p>
+                                <p>网址：<a href="${school.url}" target="_blank">${school.url}</a></p>
+                                <p>地址：${school.address}</p>
                             </div>
 
                             <div class="article-detail-content">
-                                 <p>职位描述：</p>
-                                 ${job.desc}
                             </div >
 
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
-                                    <#--<#if (job.status)== 0>-->
-                                        <#--<button class="layui-btn" lay-submit lay-filter="send">立即投递</button>-->
-                                    <#--<#else>-->
-                                        <#--<button class="layui-btn" lay-submit lay-filter="send">取消投递</button>-->
-                                    <#--</#if>-->
-                                        <button class="layui-btn" lay-submit lay-filter="send">立即投递</button>
+                                    <#--<button class="layui-btn" lay-submit lay-filter="send">立即投递</button>-->
                                 </div>
                             </div>
 
@@ -95,10 +82,10 @@
                 </div>
 
                 <!--右边小栏目-->
-                <div class="blog-main-right">
-                	<!--右边悬浮 平板或手机设备显示-->
+                <#--<div class="blog-main-right">
+                	<!--右边悬浮 平板或手机设备显示&ndash;&gt;
                     <div class="category-toggle"><i class="fa fa-chevron-left"></i></div>
-                	<!-- 分类导航 -->
+                	<!-- 分类导航 &ndash;&gt;
                 	<div class="article-category shadow">
                         <div class="article-category-title">分类导航</div>
                         <a href="javascript:go(1)">杂文随笔</a>
@@ -107,7 +94,7 @@
                         <a href="javascript:go(4)">My Sql</a>
                         <div class="clear"></div>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="clear"></div>
         </div>
@@ -120,7 +107,7 @@
     <!--侧边导航-->
     <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
         <li class="layui-nav-item layui-this">
-            <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;招聘信息</a>
+            <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;学校信息</a>
         </li>
 
         <li class="layui-nav-item">

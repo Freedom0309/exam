@@ -70,4 +70,9 @@ public class SchoolServiceImpl implements SchoolService {
         schoolRepository.deleteById(id);
     }
 
+    @Override
+    public List<School> findByNameLike(String name) {
+        return schoolRepository.findByNameIsLike(name);
+    }
+
 }

@@ -427,7 +427,7 @@ body {background: #eee;color: #444;}
 
     .article > .article-right {
         width: 73%;
-        float: right;
+        float: left;
         padding-left: 2%;
     }
 

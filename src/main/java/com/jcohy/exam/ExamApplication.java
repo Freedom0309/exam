@@ -62,6 +62,10 @@ public class ExamApplication implements WebMvcConfigurer{
 
 		registry.addViewController("/admin/schoolline/index").setViewName("/admin/schoolline/index");
 
+		registry.addViewController("/school/recommend").setViewName("/front/recommend");
+
+
+
 		registry.addViewController("/college/addreq/index").setViewName("/college/addreq/index");
 
 		registry.addViewController("/college/managereq/index").setViewName("/college/managereq/index");

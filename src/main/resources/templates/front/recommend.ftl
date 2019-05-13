@@ -27,12 +27,12 @@
             <div class="blog-user"></div>
 
 			<ul class="layui-nav" lay-filter="nav">
-				<li class="layui-nav-item layui-this">
+				<li class="layui-nav-item">
 					<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;学校信息</a>
 				</li>
 
-                <li class="layui-nav-item">
-                    <a href="/school/recommend"><i class="fa fa-home fa-fw"></i>&nbsp;学校推荐</a>
+                <li class="layui-nav-item layui-this">
+                    <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;推荐学校</a>
                 </li>
 
 				<li class="layui-nav-item">
@@ -47,15 +47,6 @@
     </nav>
     <!-- 主体（一般只改变这里的内容） -->
     <div class="blog-body">
-    	<div class="layui-carousel blog-bg" id="carousel">
-		  <div carousel-item>
-		    <div class="bg bg_a">11111111111111111111</div>
-		    <div class="bg bg_b"></div>
-		    <div class="bg bg_c"></div>
-		    <div class="bg bg_d"></div>
-		    <div class="bg bg_e"></div>
-		  </div>
-		</div>
         <div class="blog-container">
             <div class="blog-main">
                 <!-- 网站公告提示 -->
@@ -106,18 +97,10 @@
                         <form class="layui-form" action="">
                             <div class="layui-form-item">
                                 <div class="search-keywords  shadow">
-                                    <input type="text" name="key" placeholder="请输入学校名称" autocomplete="off" class="layui-input ">
+                                    <input type="text" name="key" lay-verify="required" placeholder="请输入学校名称" autocomplete="off" class="layui-input ">
                                 </div>
                                 <div class="search-submit  shadow">
-                                    <a class="search-btn" lay-submit lay-filter="schoolSearch"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="search-keywords  shadow">
-                                    <input type="text" name="proName" placeholder="请输入专业名称" autocomplete="off" class="layui-input ">
-                                </div>
-                                <div class="search-submit  shadow">
-                                    <a class="search-btn" lay-submit lay-filter="professionSearch"><i class="fa fa-search"></i></a>
+                                    <a class="search-btn" lay-submit lay-filter="formSearch"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>
                         </form>
@@ -195,8 +178,8 @@
         layui.define([ 'layer','form'], function (exports) {
             var $ = layui.jquery,
                     form  = layui.form ;
-            //监听学校提交
-            form.on('submit(schoolSearch)', function (data) {
+            //监听评论提交
+            form.on('submit(formSearch)', function (data) {
                 $.ajax({
                     type: "GET",
                     dataType: "json",
@@ -214,25 +197,6 @@
                 return false;
             });
 
-            //监听专业提交
-            form.on('submit(professionSearch)', function (data) {
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    data: data.field,
-                    url: "/profession/searchProfession",
-                    success:function(result) {
-                        if (result.isOk) {
-                            console.log(result.data);
-                            createProfession(result.data);
-                        } else {
-                            layer.msg(result.msg,{anim:6});
-                        }
-                    }
-                });
-                return false;
-            });
-
             function createHtml(data) {
                 obj = $("#jobList");
                 obj.empty();
@@ -242,47 +206,13 @@
                     detailHtml += '<div class="article-right">';
                     detailHtml += '<div class="article-title">';
                     detailHtml += '<a href="/school/detail/'+data[i].id+'">学校名称：'+data[i].name+'</a></div>';
-                    detailHtml += '<div class="article-abstract">级别：'+data[i].level+'</div>';
-                    detailHtml += '<div class="article-abstract">类型：'+data[i].type+'</div>';
-                    detailHtml += '<div class="article-abstract">地址：'+data[i].address+'</div>';
-
+                    detailHtml += '<div class="article-abstract">+级别：'+data[i].level+'</div>';
+                    detailHtml += '<div class="article-abstract">+类型：'+data[i].type+'</div>';
+                    detailHtml += '<div class="article-abstract">+地址：'+data[i].address+'</div>';
                     detailHtml += '</div>';
                     detailHtml += '<div class="clear"></div>';
                     detailHtml += '</div>';
                 }
-                obj.append(detailHtml);
-            }
-
-            function createProfession(data) {
-                obj = $("#jobList");
-                obj.empty();
-                var detailHtml = '';
-                $.each(data, function (i, obj) {
-                    console.log(obj)
-                    console.log(obj[0])
-                    console.log(obj[1])
-                    detailHtml += '<div class="article shadow animated fadeInLeft">';
-                    detailHtml += '<div class="article-right">';
-                    detailHtml += '<div class="article-title">';
-                    detailHtml += '<a>学校名称：'+obj[0].name+'</a></div>';
-                    detailHtml += '<div class="article-abstract">专业名称：'+obj[1].name+'</div>';
-                    detailHtml += '<div class="article-abstract">描述：'+obj[1].description+'</div>';
-                    detailHtml += '<div class="article-abstract">前景：'+obj[1].future+'</div>';
-                    detailHtml += '</div>';
-                    detailHtml += '<div class="clear"></div>';
-                    detailHtml += '</div>';
-                });
-               /* for(var i=0;i<data.length;i++){
-                    detailHtml += '<div class="article shadow animated fadeInLeft">';
-                    detailHtml += '<div class="article-right">';
-                    detailHtml += '<div class="article-title">';
-                    detailHtml += '<a>专业名称：'+data[i].name+'</a></div>';
-                    detailHtml += '<div class="article-abstract">描述：'+data[i].description+'</div>';
-                    detailHtml += '<div class="article-abstract">前景：'+data[i].future+'</div>';
-                    detailHtml += '</div>';
-                    detailHtml += '<div class="clear"></div>';
-                    detailHtml += '</div>';
-                }*/
                 obj.append(detailHtml);
             }
         });

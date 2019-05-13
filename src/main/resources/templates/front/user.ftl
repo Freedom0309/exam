@@ -21,11 +21,11 @@
         <div class="blog-container">
             <!-- 用户登陆 -->
             <div class="blog-user"></div>
-			<a class="blog-logo" href="/">大学生招聘网站</a>
+			<a class="blog-logo" href="/">陕西高考志愿填报信息管理平台</a>
             <!-- 导航菜单 -->
             <ul class="layui-nav" lay-filter="nav">
 				<li class="layui-nav-item">
-					<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;招聘信息</a>
+					<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;学校信息</a>
 				</li>
 
 				<li class="layui-nav-item  layui-this">

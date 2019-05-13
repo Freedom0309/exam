@@ -12,7 +12,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -20,19 +22,13 @@ import java.util.stream.Collectors;
 public class ProfessionController extends BaseController {
 
     @Autowired
-    private CollegeService collegeService;
+    private SchoolService schoolService;
 
     @Autowired
     private ProfessionService professionService;
 
     @Autowired
-    private JobService jobService;
-
-    @Autowired
-    private ResumeService resumeService;
-
-    @Autowired
-    private DeliveryRecordService deliveryRecordService;
+    private SchoolProfessionService schoolProfessionService;
 
     @Autowired
     private RequirementService requirementService;
@@ -111,8 +107,6 @@ public class ProfessionController extends BaseController {
     }
 
 
-
-
     /**
      * 获取全部college
      *
@@ -145,4 +139,24 @@ public class ProfessionController extends BaseController {
         return page;
     }
 
+    @GetMapping("/searchProfession")
+    @ResponseBody
+    public JsonResult findProfession(String proName) {
+        List lists = new ArrayList();
+        List<Profession> professions = professionService.findByNameIsLike("%" + proName + "%");
+        List<SchoolProfession> sps = schoolProfessionService.findAll();
+        if (sps.size() > 0) {
+            for (Profession pro : professions) {
+                for (SchoolProfession sp : sps) {
+                    List<Object> list = new ArrayList<>();
+                    if(pro.getId() == sp.getProfessionId()){
+                        list.add(schoolService.findById(sp.getSchoolId()));
+                        list.add(pro);
+                        lists.add(list);
+                    }
+                }
+            }
+        }
+        return JsonResult.ok().set("data", lists);
+    }
 }
