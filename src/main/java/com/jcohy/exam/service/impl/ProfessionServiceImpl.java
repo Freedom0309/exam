@@ -68,5 +68,10 @@ public class ProfessionServiceImpl implements ProfessionService {
         return professionRepository.findByNameIsLike(name);
     }
 
+    @Override
+    public List<Object[]> findProfession(String city, String arts, Integer score) {
+        return professionRepository.findProfession(city, arts, score);
+    }
+
 
 }

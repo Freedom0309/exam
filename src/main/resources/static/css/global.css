@@ -267,7 +267,7 @@ body {background: #eee;color: #444;}
 
     .blog-nav .blog-logo {
         position: absolute;
-        left: -2%;
+        left: -8%;
         width: auto;
     }
     .blog-nav .blog-user a:nth-child(2),.blog-nav .blog-user a:nth-child(3) {

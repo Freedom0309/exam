@@ -58,4 +58,15 @@ public interface ProfessionService {
      */
     List<Profession> findByNameIsLike(String name);
 
+    /**
+     *
+     * @param city
+     * @param arts
+     * @param score
+//     * @param grage
+     * @return
+     */
+//    List<Object[]> findProfession(String city, String arts, Integer score, Integer grage);
+    List<Object[]> findProfession(String city, String arts, Integer score);
+
 }

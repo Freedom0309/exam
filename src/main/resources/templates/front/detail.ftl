@@ -30,6 +30,10 @@
                 </li>
 
                 <li class="layui-nav-item">
+                    <a href="/school/recommend"><i class="fa fa-home fa-fw"></i>&nbsp;学校推荐</a>
+                </li>
+
+                <li class="layui-nav-item">
                     <a href="/user/index"><i class="fa fa-tags fa-fw"></i>&nbsp;个人中心</a>
                 </li>
             </ul>

@@ -56,7 +56,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
             dbUser = findById(jobSeeker.getId());
             if(jobSeeker.getBirth() != null ) dbUser.setBirth(jobSeeker.getBirth());
             if(jobSeeker.getName() != null ) dbUser.setName(jobSeeker.getName());
-            if(jobSeeker.getResume() != null ) dbUser.setResume(jobSeeker.getResume());
+//            if(jobSeeker.getResume() != null ) dbUser.setResume(jobSeeker.getResume());
             if(jobSeeker.getSex() != null ) dbUser.setSex(jobSeeker.getSex());
             if(jobSeeker.getEmail() != null ) dbUser.setEmail(jobSeeker.getEmail());
             if(jobSeeker.getPhone() != null ) dbUser.setPhone(jobSeeker.getPhone());

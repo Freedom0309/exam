@@ -30,7 +30,8 @@ layui.use(['jquery','form'], function () {
                         window.location.href="/";
     				} else {    					
     					window.history.go(-1);
-                        location.reload();
+                        // window.location.href="/";
+                        ///location.reload();
     				}
     			} else {
     				layer.msg(result.msg,{anim:6});

@@ -70,12 +70,12 @@
                         <#--</dl>-->
                     <#--</li>-->
 
-                    <li class="layui-nav-item">
+               <#--     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>招聘信息管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/job/index" data-id="6">职位管理</a></dd>
                         </dl>
-                    </li>
+                    </li>-->
 
                    <#-- <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>审核管理</a>
@@ -134,7 +134,7 @@
         </div>
         <!--底部信息-->
         <div class="layui-footer">
-            <p style="line-height:44px;text-align:center;">Copyright © 2018 - RM. All Rights Reserved</p>
+            <p style="line-height:44px;text-align:center;">Copyright © 2019 - RM. All Rights Reserved</p>
         </div>
 
     <script src="${ctx!}/js/plugins/layui/layui.js"></script>

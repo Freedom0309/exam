@@ -24,16 +24,11 @@ public class JobDirective implements TemplateDirectiveModel{
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(JobDirective.class);
 
     @Autowired
-    private JobService jobService;
-
-    @Autowired
     private SchoolService schoolService;
 
     @Override
     public void execute(Environment environment, Map map, TemplateModel[] templateModels, TemplateDirectiveBody templateDirectiveBody) throws TemplateException, IOException {
-        List<Job> list = jobService.findAllByStatus();
         List<School> schools = schoolService.findAll();
-        logger.warn("JobSeeker:{}",list.size());
         logger.warn("School.{}", schools.size());
 //        environment.setVariable("list", new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_25).build().wrap(list));
         environment.setVariable("list", new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_25).build().wrap(schools));

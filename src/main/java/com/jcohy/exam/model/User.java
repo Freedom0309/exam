@@ -27,7 +27,6 @@ public class User implements Serializable {
     private String sex;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "birth")
     private Date birth;
 

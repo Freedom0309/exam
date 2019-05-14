@@ -15,6 +15,21 @@
     <link href="${ctx!}/css/animate.min.css" rel="stylesheet" />
     <!-- 本页样式表 -->
     <link href="${ctx!}/css/index.css" rel="stylesheet" />
+    <style>
+        .layui-select-title{
+            width: 303px;
+        }
+        .layui-form-select .layui-edge {
+            right: -100px;
+        }
+        .layui-form-label{
+            width: 50px;
+            text-align: left;
+        }
+        .layui-form-select dl {
+            min-width: 159%;
+        }
+    </style>
 </head>
 <body>
     <!-- 导航 -->
@@ -32,7 +47,7 @@
 				</li>
 
                 <li class="layui-nav-item layui-this">
-                    <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;推荐学校</a>
+                    <a href="/school/recommend"><i class="fa fa-home fa-fw"></i>&nbsp;推荐学校</a>
                 </li>
 
 				<li class="layui-nav-item">
@@ -96,13 +111,56 @@
                     <div class="blog-search">
                         <form class="layui-form" action="">
                             <div class="layui-form-item">
+
+                                <div class="layui-inline" style="background: #ffffff;">
+                                    <label class="layui-form-label">城市</label>
+                                    <div class="layui-input-inline" style="">
+                                        <select name="city" lay-verify="required" lay-search="">
+                                            <option value="">请选择城市</option>
+                                            <option value="西安">西安</option>
+                                            <option value="咸阳">咸阳</option>
+                                            <option value="渭南">渭南</option>
+                                            <option value="铜川">铜川</option>
+                                            <option value="汉中">汉中</option>
+                                            <option value="商洛">商洛</option>
+                                            <option value="安康">安康</option>
+                                            <option value="延安">延安</option>
+                                            <option value="榆林">榆林</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+
+                                <div class="layui-inline" style="background: #ffffff;">
+                                    <label class="layui-form-label">文理科</label>
+                                    <div class="layui-input-inline" style="">
+                                        <select name="arts" lay-verify="required" lay-search="">
+                                            <option value="">请选择</option>
+                                            <option value="理科">理科</option>
+                                            <option value="文科">文科</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
                                 <div class="search-keywords  shadow">
-                                    <input type="text" name="key" lay-verify="required" placeholder="请输入学校名称" autocomplete="off" class="layui-input ">
+                                    <input type="text" name="score" lay-verify="required|number" placeholder="请输入分数" autocomplete="off" class="layui-input ">
                                 </div>
                                 <div class="search-submit  shadow">
                                     <a class="search-btn" lay-submit lay-filter="formSearch"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>
+                            <#--<div class="layui-form-item">
+                                <div class="search-keywords  shadow">
+                                    <input type="text" name="grade" lay-verify="required|number" placeholder="请输入位次" autocomplete="off" class="layui-input ">
+                                </div>
+                                <div class="search-submit  shadow">
+                                    <a class="search-btn" lay-submit lay-filter="formSearch"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>-->
                         </form>
                     </div>
                     <!--推荐/点击排行-->
@@ -152,18 +210,8 @@
     </div>
     <!-- 底部 -->
 	<footer class="blog-footer">
-		<p><span>Copyright</span><span>&copy;</span><span>2018</span><a href="http://www.lyblogs.cn">RecruitManagement</a></p>
+		<p><span>Copyright</span><span>&copy;</span><span>2019</span>陕西高考志愿填报信息管理平台</p>
 	</footer>
-    <!--侧边导航-->
-    <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
-		<li class="layui-nav-item layui-this">
-			<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;招聘信息</a>
-		</li>
-
-		<li class="layui-nav-item">
-			<a href="/user/index"><i class="fa fa-tags fa-fw"></i>&nbsp;个人中心</a>
-		</li>
-    </ul>
 
     <!--遮罩-->
     <div class="blog-mask animated layui-hide"></div>
@@ -184,7 +232,7 @@
                     type: "GET",
                     dataType: "json",
                     data: data.field,
-                    url: "/school/searchSchool",
+                    url: "/profession/recommendProfession",
                     success:function(result) {
                         if (result.isOk) {
                             console.log(result.data);
@@ -201,18 +249,30 @@
                 obj = $("#jobList");
                 obj.empty();
                 var detailHtml = '';
-                for(var i=0;i<data.length;i++){
+                $.each(data, function (i, obj) {
                     detailHtml += '<div class="article shadow animated fadeInLeft">';
                     detailHtml += '<div class="article-right">';
                     detailHtml += '<div class="article-title">';
-                    detailHtml += '<a href="/school/detail/'+data[i].id+'">学校名称：'+data[i].name+'</a></div>';
-                    detailHtml += '<div class="article-abstract">+级别：'+data[i].level+'</div>';
-                    detailHtml += '<div class="article-abstract">+类型：'+data[i].type+'</div>';
-                    detailHtml += '<div class="article-abstract">+地址：'+data[i].address+'</div>';
+                    detailHtml += '<a>学校名称：'+obj[2]+'</a></div>';
+                    detailHtml += '<div class="article-abstract">专业：'+obj[1]+'</div>';
+                    detailHtml += '<div class="article-abstract">录取分数：'+obj[3]+'</div>';
+                    // detailHtml += '<div class="article-abstract">地址：'+obj[2]+'</div>';
                     detailHtml += '</div>';
                     detailHtml += '<div class="clear"></div>';
                     detailHtml += '</div>';
-                }
+                });
+               /* for(var i=0;i<data.length;i++){
+                    detailHtml += '<div class="article shadow animated fadeInLeft">';
+                    detailHtml += '<div class="article-right">';
+                    detailHtml += '<div class="article-title">';
+                    detailHtml += '<a>学校名称：'+data[i]+'</a></div>';
+                    detailHtml += '<div class="article-abstract">专业：'+data[i]+'</div>';
+                    detailHtml += '<div class="article-abstract">类型：'+data[i]+'</div>';
+                    detailHtml += '<div class="article-abstract">地址：'+data[i]+'</div>';
+                    detailHtml += '</div>';
+                    detailHtml += '<div class="clear"></div>';
+                    detailHtml += '</div>';
+                }*/
                 obj.append(detailHtml);
             }
         });

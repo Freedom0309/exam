@@ -33,7 +33,7 @@
                 <input type="password" name="password" value="123456" lay-verify="required" placeholder="请输入密码" autocomplete="off" value="" class="layui-input">
             </div>
 
-            <div class="layui-input-block" style="margin-left: 0">
+            <div class="layui-input-block layui-hide" style="margin-left: 0">
                 <select name="role" lay-verify="">
                     <option value="">请选择一个角色</option>
                     <option value="teacher">学院</option>

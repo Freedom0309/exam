@@ -139,6 +139,11 @@ public class ProfessionController extends BaseController {
         return page;
     }
 
+    /**
+     * 根据名称搜索专业
+     * @param proName
+     * @return
+     */
     @GetMapping("/searchProfession")
     @ResponseBody
     public JsonResult findProfession(String proName) {
@@ -159,4 +164,15 @@ public class ProfessionController extends BaseController {
         }
         return JsonResult.ok().set("data", lists);
     }
+
+    @GetMapping("/recommendProfession")
+    @ResponseBody
+    public JsonResult findProfession(String city, String arts, Integer score, Integer grade) {
+        List lists = new ArrayList();
+        List<Object[]> obj = professionService.findProfession(city, arts, score);
+
+        return JsonResult.ok().set("data", obj);
+    }
+
+
 }

@@ -88,3 +88,9 @@
     text-indent: 1.3em;
     padding: 2px 0;
 }
+
+/*留言板*/
+.btn-comment{
+    right: 2%;
+    top: 9px;
+}

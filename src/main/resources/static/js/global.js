@@ -127,11 +127,13 @@
     		$(".blog-user").empty();
     		$(".blog-user").append('<a href="/"><img src="/images/login.png" alt="" title="" /></a>'+
             	'<a class="user-out"><i class="fa fa-sign-out"></i></a>');
+    		$(".btn-comment").removeClass("layui-hide");
     	} else {
     		$(".blog-user").empty();
     		$(".blog-user").append('<a href="/user/login"><i class="fa fa-user-circle-o"></i></a>'+
                 	'<a href="/user/login">登陆</a>'+
                 	'<a href="/user/register">注册</a>');
+    		$(".btn-comment").addClass("layui-hide");
     	}
     }
     

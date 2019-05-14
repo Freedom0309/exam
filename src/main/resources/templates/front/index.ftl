@@ -49,7 +49,7 @@
     <div class="blog-body">
     	<div class="layui-carousel blog-bg" id="carousel">
 		  <div carousel-item>
-		    <div class="bg bg_a">11111111111111111111</div>
+		    <div class="bg bg_a"></div>
 		    <div class="bg bg_b"></div>
 		    <div class="bg bg_c"></div>
 		    <div class="bg bg_d"></div>
@@ -65,6 +65,28 @@
                         <span style="color: #009688">有事做有所期待，日子就是幸福的</span>
                         <span style="color: #009688">用心每一天，不忘初心，方能走远</span>
                         <span style="color: #009688">偷偷挤进一缕斜阳，送来满满幸福</span>
+                    </div>
+                    <div class="layui-layout-right layui-hide btn-comment">
+                        <span>留言板</span>
+                    </div>
+                </div>
+                <div class="layui-hide comment">
+
+                    <div style="backg  round-color: #F2F2F2;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card">
+                                    <div class="layui-card-header">标题</div>
+                                    <div class="layui-card-body">
+                                        内容
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <textarea class="layui-textarea" name="content"  placeholder="请输入内容"></textarea>
                     </div>
                 </div>
                 <!--左边文章列表-->
@@ -161,6 +183,7 @@
 						<ul class="blogroll">
 							<li><a target="_blank" href="http://www.layui.com/" title="Layui">Layui</a></li>
 						</ul>
+
 					</div>
                 </div>
             </div>
@@ -169,12 +192,12 @@
     </div>
     <!-- 底部 -->
 	<footer class="blog-footer">
-		<p><span>Copyright</span><span>&copy;</span><span>2018</span><a href="http://www.lyblogs.cn">RecruitManagement</a></p>
+		<p><span>Copyright</span><span>&copy;</span><span>2018</span>陕西高考志愿填报信息管理平台</p>
 	</footer>
     <!--侧边导航-->
     <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
 		<li class="layui-nav-item layui-this">
-			<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;招聘信息</a>
+			<a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;学校信息</a>
 		</li>
 
 		<li class="layui-nav-item">

@@ -26,29 +26,13 @@ layui.use(['jquery','form','util','upload','laydate'], function () {
     	$("#email").val(user.email);
         $("#birth").val(user.birth);
 
-        $("#resumeId").val(user.resume.id);
-        $("#resumenum").val(user.resume.num);
-        $("#resumename").val(user.resume.name);
-        $("#resumephone").val(user.resume.phone);
-        $("#resumeidNo").val(user.resume.idNo);
-        $("#resumeemail").val(user.resume.email);
-        $("#resumeeducation").val(user.resume.education);
-        $("#resumework").val(user.resume.work);
-        $("#resumebirth").val(user.resume.birth);
-        $("#resumepersonal").val(user.resume.personal);
         if(user.sex == "女"){
         	sex = 1;
 		}else{
         	sex = 0;
 		}
-        if(user.resume.sex == "女"){
-            resumeSex = 3;
-        }else{
-            resumeSex = 2;
-        }
         console.log($(".layui-form-radio"));
     	$(".layui-form-radio").get(sex).click();
-        $(".layui-form-radio").get(resumeSex).click();
     } else {
     	layer.msg('会话已过期,请先去登陆',{anim:6,time:2000});
     	location.href =  "/user/login";

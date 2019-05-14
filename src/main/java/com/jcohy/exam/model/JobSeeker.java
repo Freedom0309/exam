@@ -20,39 +20,28 @@ public class JobSeeker implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "job_seeker_num")
+    @Column(name = "num")
     private Integer num;
 
-    @Column(name = "job_seeker_name")
+    @Column(name = "name")
     private String name;
 
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "job_seeker_sex")
+    @Column(name = "sex")
     private String sex;
 
-    @Column(name = "job_seeker_birth")
-    private String birth;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    @Column(name = "birth")
+    private Date birth;
 
     @Column(name = "password")
     private String password;
 
     @Column(name = "email")
     private String email;
-
-
-    public Resume getResume() {
-        return resume;
-    }
-
-    public void setResume(Resume resume) {
-        this.resume = resume;
-    }
-
-    @OneToOne
-    @JoinColumn(name = "resume_id")
-    private Resume resume;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
@@ -110,11 +99,11 @@ public class JobSeeker implements Serializable {
         this.sex = sex;
     }
 
-    public String getBirth() {
+    public Date getBirth() {
         return birth;
     }
 
-    public void setBirth(String birth) {
+    public void setBirth(Date birth) {
         this.birth = birth;
     }
 

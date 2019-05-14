@@ -13,11 +13,13 @@ import com.jcohy.exam.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -79,7 +81,8 @@ public class JobSeekerController extends BaseController{
      */
     @PostMapping("/register")
     @ResponseBody
-    public JsonResult register(Integer num, String phone, String password, String name){
+    public JsonResult register(Integer num, String phone, String password,
+                               String name, String sex, String email){
         if(num == null||phone == null || StringUtils.hashEmpty(name,password)){
             return JsonResult.fail("参数不能为空");
         }
@@ -92,26 +95,12 @@ public class JobSeekerController extends BaseController{
         jobSeeker.setPassword(password);
         jobSeeker.setName(name);
         jobSeeker.setPhone(phone);
+        jobSeeker.setSex(sex);
+        jobSeeker.setEmail(email);
         jobSeekerService.saveOrUpdate(jobSeeker);
         return JsonResult.ok("注册成功").set("data", jobSeeker);
     }
 
-    /**
-     * 更新求职者信息
-     * @param jobSeeker
-     * @return
-     */
-    @GetMapping("/update")
-    @ResponseBody
-    public JsonResult update(JobSeeker jobSeeker){
-        try {
-            JobSeeker stu = jobSeekerService.saveOrUpdate(jobSeeker);
-            return JsonResult.ok().set("data",stu);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonResult.fail(e.getMessage());
-        }
-    }
 
     /**
      * 修改密码
@@ -130,6 +119,23 @@ public class JobSeekerController extends BaseController{
         }
     }
 
+    @GetMapping("/update")
+    @ResponseBody
+    public JsonResult updateUserInfo(JobSeeker jobSeeker, String birth1){
+
+        try {
+            Date str = DateUtils.strToDate(birth1);
+//            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            Date date = simpleDateFormat.parse(birth1);
+            jobSeeker.setBirth(str);
+            jobSeekerService.saveOrUpdate(jobSeeker);
+            return JsonResult.ok().set("data", jobSeeker);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
+        }
+    }
+
     /**
      * 增加简历
      *
@@ -144,7 +150,7 @@ public class JobSeekerController extends BaseController{
             resume.setBirth(str);
             Resume res = resumeService.saveOrUpdate(resume);
             JobSeeker jobSeeker = jobSeekerService.findByNum(res.getNum());
-            jobSeeker.setResume(res);
+//            jobSeeker.setResume(res);
             jobSeeker = jobSeekerService.saveOrUpdate(jobSeeker);
             return JsonResult.ok("添加成功").set("data", res).set("data", jobSeeker);
         } catch (Exception e) {
@@ -202,9 +208,9 @@ public class JobSeekerController extends BaseController{
         try {
             JobSeeker jobSeeker = jobSeekerService.findById(userId);
             Job job = jobService.findById(jobId);
-            if (jobSeeker.getResume() == null) {
-                return JsonResult.fail("还没有简历，先去添加一份简历吧！");
-            }
+//            if (jobSeeker.getResume() == null) {
+//                return JsonResult.fail("还没有简历，先去添加一份简历吧！");
+//            }
             List<DeliveryRecord> list = new ArrayList<>();
             list = deliveryRecordService.findAll();
             for (DeliveryRecord deliveryRecord : list) {
@@ -215,7 +221,7 @@ public class JobSeekerController extends BaseController{
             DeliveryRecord deliveryRecord = new DeliveryRecord();
             deliveryRecord.setCollegeId(job.getCollege().getId());
             deliveryRecord.setJobSeeker(jobSeeker);
-            deliveryRecord.setResumeId(jobSeeker.getResume().getId());
+//            deliveryRecord.setResumeId(jobSeeker.getResume().getId());
             deliveryRecord.setJob(job);
             deliveryRecord.setNum(jobSeeker.getId());
             Date date = new Date();
