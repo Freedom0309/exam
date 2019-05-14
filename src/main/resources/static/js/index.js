@@ -33,11 +33,5 @@
         }, interval);
     }
 
-    $(".btn-comment").on('click', function () {
-        if ($(".comment").hasClass("layui-hide")) {
-            $(".comment").removeClass("layui-hide");
-        }else{
-            $(".comment").addClass("layui-hide");
-        }
-    });
+
 });

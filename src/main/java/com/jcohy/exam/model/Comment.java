@@ -4,7 +4,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -18,10 +17,10 @@ public class Comment implements Serializable {
 
     @JoinColumn(name = "user_id")
     @ManyToOne
-    private User user;
+    private JobSeeker jobSeeker;
 
-    @Column(name = "comment")
-    private String comment;
+    @Column(name = "content")
+    private String content;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
@@ -36,20 +35,20 @@ public class Comment implements Serializable {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public JobSeeker getJobSeeker() {
+        return jobSeeker;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setJobSeeker(JobSeeker jobSeeker) {
+        this.jobSeeker = jobSeeker;
     }
 
-    public String getComment() {
-        return comment;
+    public String getContent() {
+        return content;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Date getTime() {

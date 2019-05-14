@@ -3,6 +3,8 @@ package com.jcohy.exam.service;
 import com.jcohy.exam.exception.ServiceException;
 import com.jcohy.exam.model.Batch;
 import com.jcohy.exam.model.Comment;
+import com.jcohy.exam.model.JobSeeker;
+import com.jcohy.exam.model.User;
 
 import java.util.List;
 
@@ -38,9 +40,9 @@ public interface CommentService {
 
     /**
      * 根据用户查询留言
-     * @param userId
+     * @param user
      * @return
      */
-    List<Comment> findByUserId(Integer userId);
+    List<Comment> findByUserId(JobSeeker jobSeeker);
 
 }

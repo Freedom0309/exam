@@ -1,6 +1,8 @@
 package com.jcohy.exam.respository;
 
 import com.jcohy.exam.model.Comment;
+import com.jcohy.exam.model.JobSeeker;
+import com.jcohy.exam.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -8,8 +10,10 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment,Integer> {
 
-    @Query(value = "select c from comment c where c.user_id = ?1 ")
-    List<Comment> findByUserId(Integer userId);
+    /*@Query(value = "select c.id,c.content,c.time from comment c " +
+            "left join where c.user_id = ?1 "
+        ,nativeQuery = true)*/
+    List<Comment> findByJobSeeker(JobSeeker jobSeeker);
 
 //    Comment findCommentByName(String name);
 
