@@ -4,7 +4,6 @@ import com.jcohy.date.DateUtils;
 import com.jcohy.exam.common.JsonResult;
 import com.jcohy.exam.model.Comment;
 import com.jcohy.exam.model.JobSeeker;
-import com.jcohy.exam.model.User;
 import com.jcohy.exam.service.CommentService;
 import com.jcohy.exam.service.JobSeekerService;
 import org.springframework.beans.factory.annotation.Autowired;

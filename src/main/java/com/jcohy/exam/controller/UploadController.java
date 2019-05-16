@@ -2,9 +2,7 @@ package com.jcohy.exam.controller;
 
 
 import com.jcohy.exam.common.JsonResult;
-import com.jcohy.exam.service.ResumeService;
 import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -26,8 +24,6 @@ import java.util.Map;
 @Controller
 public class UploadController {
 
-    @Autowired
-    private ResumeService resumeService;
 
     @Value("${file.path}")
     private String filePath;

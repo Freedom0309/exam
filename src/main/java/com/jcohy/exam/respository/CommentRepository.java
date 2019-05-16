@@ -2,9 +2,7 @@ package com.jcohy.exam.respository;
 
 import com.jcohy.exam.model.Comment;
 import com.jcohy.exam.model.JobSeeker;
-import com.jcohy.exam.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

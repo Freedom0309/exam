@@ -32,13 +32,6 @@ public class SchoolController extends BaseController {
     private ProfessionService professionService;
 
 
-    @Autowired
-    private DeliveryRecordService deliveryRecordService;
-
-    @Autowired
-    private RequirementService requirementService;
-
-
     @GetMapping("/form")
     public String form(@RequestParam(required = false) Integer id, ModelMap map) {
         List<School> schools = schoolService.findAll();
@@ -304,30 +297,6 @@ public class SchoolController extends BaseController {
     }
 
 
-    @GetMapping("/hcList")
-    @ResponseBody
-    public PageJson<Requirement> hcList(@SessionAttribute("user") School school, ModelMap map) {
-        PageRequest pageRequest = getPageRequest();
-        Page<Requirement> plans = requirementService.findAll(pageRequest);
-        List<Requirement> list = plans.stream().filter(x -> x.getCollege().getId() == school.getId()).collect(Collectors.toList());
-        PageJson<Requirement> page = new PageJson<>();
-        page.setCode(0);
-        page.setMsg("成功");
-        page.setCount(list.size());
-        page.setData(list);
-        return page;
-    }
-
-    @DeleteMapping("/deliverys/{id}")
-    public JsonResult del(@PathVariable Integer id) {
-        try {
-            deliveryRecordService.delete(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonResult.fail("删除失败");
-        }
-        return JsonResult.ok();
-    }
 
     /**
      * 查询具体的学校信息

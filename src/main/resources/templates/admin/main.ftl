@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>陕西高考志愿填报信息管理平台</title>
-    <link rel="shortcut icon" href="${ctx}/images/jcohy.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${ctx}/images/logo.png" type="image/x-icon">
     <!-- layui.css -->
     <link href="${ctx!}/js/plugins/layui/css/layui.css" rel="stylesheet" />
     <!-- font-awesome.css -->

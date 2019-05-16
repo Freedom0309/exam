@@ -1,8 +1,6 @@
 package com.jcohy.exam.directive;
 
-import com.jcohy.exam.model.Job;
 import com.jcohy.exam.model.School;
-import com.jcohy.exam.service.JobService;
 import com.jcohy.exam.service.SchoolService;
 import freemarker.core.Environment;
 import freemarker.template.*;

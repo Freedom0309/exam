@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 
-public class User implements Serializable {
+public class User123 implements Serializable {
 
     private static final long serialVersionUID = -6636991846449967983L;
 

@@ -38,17 +38,7 @@ public class ExamApplication implements WebMvcConfigurer{
 
 		registry.addViewController("/admin/lab/index").setViewName("/admin/lab/index");
 
-		registry.addViewController("/admin/plan/index").setViewName("/admin/plan/index");
 
-		registry.addViewController("/admin/college/index").setViewName("/admin/college/index");
-
-		registry.addViewController("/admin/addcollege/index").setViewName("/admin/addcollege/index");
-
-		registry.addViewController("/admin/managereq/index").setViewName("/admin/managereq/index");
-
-		registry.addViewController("/admin/job/index").setViewName("/admin/job/index");
-
-		registry.addViewController("/admin/check/index").setViewName("/admin/check/index");
 
 		registry.addViewController("/admin/school/index").setViewName("/admin/school/index");
 
@@ -63,16 +53,6 @@ public class ExamApplication implements WebMvcConfigurer{
 		registry.addViewController("/school/recommend").setViewName("/front/recommend");
 
 
-
-		registry.addViewController("/college/addreq/index").setViewName("/college/addreq/index");
-
-		registry.addViewController("/college/managereq/index").setViewName("/college/managereq/index");
-
-		registry.addViewController("/college/shenhe/index").setViewName("/college/shenhe/index");
-
-
-		//学院主页，从登录
-		registry.addViewController("/college/main").setViewName("/college/main");
 
 		registry.addViewController("/user/login").setViewName("front/login");
 

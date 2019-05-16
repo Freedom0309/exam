@@ -1,10 +1,8 @@
 package com.jcohy.exam.service;
 
 import com.jcohy.exam.exception.ServiceException;
-import com.jcohy.exam.model.Batch;
 import com.jcohy.exam.model.Comment;
 import com.jcohy.exam.model.JobSeeker;
-import com.jcohy.exam.model.User;
 
 import java.util.List;
 

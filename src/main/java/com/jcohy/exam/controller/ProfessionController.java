@@ -30,9 +30,6 @@ public class ProfessionController extends BaseController {
     @Autowired
     private SchoolProfessionService schoolProfessionService;
 
-    @Autowired
-    private RequirementService requirementService;
-
 
     @GetMapping("/form")
     public String form(@RequestParam(required = false) Integer id, ModelMap map) {
@@ -65,6 +62,7 @@ public class ProfessionController extends BaseController {
     @GetMapping("/list")
     @ResponseBody
     public PageJson<Profession> all() {
+        //        List<> list = plans.stream().filter(x -> x.getCollege().getId() == Profession.getId()).collect(Collectors.toList());
         PageRequest pageRequest = getPageRequest();
         Page<Profession> professions = professionService.findAll(pageRequest);
         PageJson<Profession> page = new PageJson<>();
@@ -122,21 +120,6 @@ public class ProfessionController extends BaseController {
             e.printStackTrace();
             return JsonResult.fail(e.getMessage());
         }
-    }
-
-
-    @GetMapping("/hcList")
-    @ResponseBody
-    public PageJson<Requirement> hcList(@SessionAttribute("user") Profession Profession, ModelMap map) {
-        PageRequest pageRequest = getPageRequest();
-        Page<Requirement> plans = requirementService.findAll(pageRequest);
-        List<Requirement> list = plans.stream().filter(x -> x.getCollege().getId() == Profession.getId()).collect(Collectors.toList());
-        PageJson<Requirement> page = new PageJson<>();
-        page.setCode(0);
-        page.setMsg("成功");
-        page.setCount(list.size());
-        page.setData(list);
-        return page;
     }
 
     /**

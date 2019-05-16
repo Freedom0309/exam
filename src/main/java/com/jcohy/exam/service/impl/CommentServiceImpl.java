@@ -1,10 +1,8 @@
 package com.jcohy.exam.service.impl;
 
 import com.jcohy.exam.exception.ServiceException;
-import com.jcohy.exam.model.Batch;
 import com.jcohy.exam.model.Comment;
 import com.jcohy.exam.model.JobSeeker;
-import com.jcohy.exam.model.User;
 import com.jcohy.exam.respository.CommentRepository;
 import com.jcohy.exam.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
