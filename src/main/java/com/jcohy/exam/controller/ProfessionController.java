@@ -145,7 +145,8 @@ public class ProfessionController extends BaseController {
                 }
             }
         }
-        return JsonResult.ok().set("data", lists);
+//        return JsonResult.ok().set("data", lists);
+        return JsonResult.ok().set("data", professions);
     }
 
     @GetMapping("/recommendProfession")

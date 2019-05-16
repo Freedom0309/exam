@@ -3,7 +3,9 @@ package com.jcohy.exam.controller;
 import com.jcohy.exam.common.JsonResult;
 import com.jcohy.exam.common.PageJson;
 import com.jcohy.exam.model.Batch;
+import com.jcohy.exam.model.School;
 import com.jcohy.exam.service.BatchService;
+import com.jcohy.exam.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,11 +22,14 @@ public class BatchController extends BaseController {
     @Autowired
     private BatchService batchService;
 
+    @Autowired
+    private SchoolService schoolService;
+
 
     @GetMapping("/form")
     public String form(@RequestParam(required = false) Integer id, ModelMap map) {
-        List<Batch> batchs = batchService.findAll();
-        map.put("batchs", batchs);
+        List<School> schools = schoolService.findAll();
+        map.put("schools", schools);
         if (id != null) {
             Batch batch = batchService.findById(id);
             map.put("batch", batch);
@@ -34,9 +39,10 @@ public class BatchController extends BaseController {
 
     @PostMapping("/save")
     @ResponseBody
-    public JsonResult save(Batch Batch) {
+    public JsonResult save(Batch batch, Integer schoolId) {
         try {
-            batchService.saveOrUpdate(Batch);
+            batch.setSchool(schoolService.findById(schoolId));
+            batchService.saveOrUpdate(batch);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.fail(e.getMessage());

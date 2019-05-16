@@ -40,9 +40,7 @@ public class AdminController extends BaseController{
             List<JobSeeker> list = jobSeekerService.findAll();
             List<JobSeeker> list1 = new ArrayList<>();
             for (JobSeeker jobSeeker : list) {
-                if (jobSeeker.getStatus() == 1) {
                     list1.add(jobSeeker);
-                }
             }
             return JsonResult.ok().set("data", list1);
         } catch (Exception e) {
@@ -77,9 +75,7 @@ public class AdminController extends BaseController{
         try {
             List<JobSeeker> list = jobSeekerService.findAll();
             for (JobSeeker jobSeeker : list) {
-                if (jobSeeker.getStatus() == 1) {
                     jobSeekerService.delete(jobSeeker.getId());
-                }
             }
             return JsonResult.ok("删除成功");
         } catch (Exception e) {

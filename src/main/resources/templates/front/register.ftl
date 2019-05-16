@@ -19,11 +19,11 @@
 <!-- 导航 -->
 <nav class="blog-nav layui-header">
     <div class="blog-container">
-        <a class="blog-logo" href="/">大学生招聘网站</a>
+        <a class="blog-logo" href="/">陕西高考志愿填报信息管理平台</a>
         <!-- 导航菜单 -->
         <ul class="layui-nav" lay-filter="nav">
             <li class="layui-nav-item layui-this">
-                <a href="home.html"><i class="fa fa-home fa-fw"></i>&nbsp;招聘信息</a>
+                <a href="home.html"><i class="fa fa-home fa-fw"></i>&nbsp;学校信息</a>
             </li>
 
             <li class="layui-nav-item">
@@ -102,20 +102,10 @@
                             </div>
 
                             <div class="layui-form-item">
-                                <label class="layui-form-label">密码</label>
+                                <label class="layui-form-label">年龄</label>
                                 <div class="layui-input-inline">
-                                    <input type="password" name="password" required lay-verify="required"
-                                           autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-form-mid layui-word-aux">3到18个字符</div>
-                            </div>
-
-
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">确认密码</label>
-                                <div class="layui-input-inline">
-                                    <input type="password" name="rePassword" required lay-verify="required"
-                                           autocomplete="off" class="layui-input">
+                                    <input type="number" name="age" required lay-verify="required|number" autocomplete="off"
+                                           class="layui-input">
                                 </div>
                             </div>
 
@@ -142,6 +132,24 @@
                             </div>
 
                             <div class="layui-form-item">
+                                <label class="layui-form-label">密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="password" required lay-verify="required"
+                                           autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">3到18个字符</div>
+                            </div>
+
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">确认密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="rePassword" required lay-verify="required"
+                                           autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
                                 <button class="layui-btn" lay-submit lay-filter="regForm">立即注册</button>
                             </div>
                         </form>
@@ -160,7 +168,7 @@
 <!--侧边导航-->
 <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
     <li class="layui-nav-item layui-this">
-        <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;招聘信息</a>
+        <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;学校信息</a>
     </li>
 
     <li class="layui-nav-item">

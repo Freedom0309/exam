@@ -29,7 +29,7 @@
                 <li class="ht-nav-item">
                     <a id="updatePassword" style="cursor: pointer"><i class="fa fa-power-off fa-fw"></i>修改密码</a>
                     <input type="hidden" value="${Session.user.num?c}" id="num">
-                    <input type="hidden" value="${Session.role}" id="role">
+                    <#--<input type="hidden" value="${Session.role}" id="role">-->
                     <input type="hidden" value="${Session.user.id}" >
                 </li>
                 <li class="ht-nav-item">

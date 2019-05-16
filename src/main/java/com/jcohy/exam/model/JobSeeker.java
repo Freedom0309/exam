@@ -15,7 +15,6 @@ public class JobSeeker implements Serializable {
 
     private static final long serialVersionUID = 3L;
 
-    //Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -43,21 +42,11 @@ public class JobSeeker implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updatetime")
-    private Date updateTime;
+    @Column(name = "role")
+    private Integer role;
 
-    public Integer getStatus() {
-        return status;
-    }
+    private Integer age;
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    @Column(name = "status")
-    private Integer status;
 
     public Integer getId() {
         return id;
@@ -123,11 +112,19 @@ public class JobSeeker implements Serializable {
         this.email = email;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Integer getRole() {
+        return role;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

@@ -42,6 +42,19 @@
                         <input type="hidden" name="id" value="${(batch.id)!}">
                     </div>
 
+                    <div class="layui-form-item" style="margin-top: 10px">
+                        <label class="layui-form-label">学校</label>
+                        <div class="layui-input-inline">
+                            <select name="schoolId" lay-verify="required">
+                                <option value="">请选择学校</option>
+                                <#list schools as x>
+                                    <option value="${x.id}"
+                                    <#if (x.id == batch.school.id)>selected</#if>>${x.name}</option>
+                                </#list>
+                            </select>
+                        </div>
+                    </div>
+
 
                     <div class="layui-form-item" style="margin-top: 10px">
                         <label class="layui-form-label">年份</label>

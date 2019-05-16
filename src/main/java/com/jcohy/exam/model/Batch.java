@@ -35,6 +35,9 @@ public class Batch implements Serializable {
     @Column(name = "avg_score")
     private Integer avgScore;
 
+    @JoinColumn(name = "school_id")
+    @ManyToOne
+    private School school;
 
     public Integer getId() {
         return id;
@@ -107,4 +110,11 @@ public class Batch implements Serializable {
         this.avgScore = avgScore;
     }
 
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
 }

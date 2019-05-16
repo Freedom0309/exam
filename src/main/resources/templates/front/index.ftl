@@ -367,16 +367,14 @@
             obj.empty();
             var detailHtml = '';
             $.each(data, function (i, obj) {
-                console.log(obj)
-                console.log(obj[0])
-                console.log(obj[1])
+
                 detailHtml += '<div class="article shadow animated fadeInLeft">';
                 detailHtml += '<div class="article-right">';
-                detailHtml += '<div class="article-title">';
-                detailHtml += '<a>学校名称：' + obj[0].name + '</a></div>';
-                detailHtml += '<div class="article-abstract">专业名称：' + obj[1].name + '</div>';
-                detailHtml += '<div class="article-abstract">描述：' + obj[1].description + '</div>';
-                detailHtml += '<div class="article-abstract">前景：' + obj[1].future + '</div>';
+                // detailHtml += '<div class="article-title">';
+                // detailHtml += '<a>学校名称：' + obj[0].name + '</a></div>';
+                detailHtml += '<div class="article-title">专业名称：' + obj.name + '</div>';
+                detailHtml += '<div class="article-abstract">描述：' + obj.description + '</div>';
+                detailHtml += '<div class="article-abstract">前景：' + obj.future + '</div>';
                 detailHtml += '</div>';
                 detailHtml += '<div class="clear"></div>';
                 detailHtml += '</div>';

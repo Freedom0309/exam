@@ -77,37 +77,75 @@
 				    	<!-- 注册 -->
 		    			<div class="layui-tab-item">
 		    				<form class="layui-form layui-form-pane" method="post">
-					    		<div class="layui-form-item">
-								    <label class="layui-form-label">帐号</label>
-							    	<div class="layui-input-inline">
-							        	<input type="email" name="num" required  lay-verify="number" autocomplete="off" class="layui-input">
-							        </div>
-							        <div class="layui-form-mid layui-word-aux">将会成为您唯一的登陆名</div>
-							    </div>
-							    <div class="layui-form-item">
-								    <label class="layui-form-label">姓名</label>
-								    <div class="layui-input-inline">
-								      <input type="text" name="name" required lay-verify="required" autocomplete="off" class="layui-input">
-								    </div>
-							   </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">帐号</label>
+                                    <div class="layui-input-inline">
+                                        <input type="email" name="num" required lay-verify="number" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">将会成为您唯一的登陆名</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">姓名</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="name" required lay-verify="required" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
 
-							    <div class="layui-form-item">
-								    <label class="layui-form-label">密码</label>
-								    <div class="layui-input-inline">
-								      <input type="password" name="password" required lay-verify="required" autocomplete="off" class="layui-input">
-								    </div>
-								    <div class="layui-form-mid layui-word-aux">3到18个字符</div>
-							    </div>
-							    <div class="layui-form-item">
-								    <label class="layui-form-label">确认密码</label>
-								    <div class="layui-input-inline">
-								      <input type="password" name="rePassword" required lay-verify="required" autocomplete="off" class="layui-input">
-								    </div>
-							    </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">性别</label>
+                                    <div class="layui-input-inline">
+                                        <input type="radio" name="sex" value="男" title="男">
+                                        <input type="radio" name="sex" value="女" title="女">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">年龄</label>
+                                    <div class="layui-input-inline">
+                                        <input type="number" name="age" required lay-verify="required|number" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">出生日期</label>
+                                    <div class="layui-input-inline">
+                                        <input id="birth" type="text" lay-verify="date" name="births" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">电话</label>
                                     <div class="layui-input-inline">
-                                        <input type="password" name="phone" required lay-verify="number" autocomplete="off" class="layui-input">
+                                        <input type="password" name="phone" required lay-verify="number" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">邮箱</label>
+                                    <div class="layui-input-inline">
+                                        <input id="email" type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" >
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">密码</label>
+                                    <div class="layui-input-inline">
+                                        <input type="password" name="password" required lay-verify="required"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">3到18个字符</div>
+                                </div>
+
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">确认密码</label>
+                                    <div class="layui-input-inline">
+                                        <input type="password" name="rePassword" required lay-verify="required"
+                                               autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
 

@@ -66,7 +66,7 @@ public class JobSeekerController extends BaseController{
     @PostMapping("/register")
     @ResponseBody
     public JsonResult register(Integer num, String phone, String password,
-                               String name, String sex, String email){
+                               String name, String sex, String email, Integer age){
         if(num == null||phone == null || StringUtils.hashEmpty(name,password)){
             return JsonResult.fail("参数不能为空");
         }
@@ -81,6 +81,7 @@ public class JobSeekerController extends BaseController{
         jobSeeker.setPhone(phone);
         jobSeeker.setSex(sex);
         jobSeeker.setEmail(email);
+        jobSeeker.setAge(0);
         jobSeekerService.saveOrUpdate(jobSeeker);
         return JsonResult.ok("注册成功").set("data", jobSeeker);
     }
