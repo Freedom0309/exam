@@ -67,9 +67,9 @@
 							  </div>
 								<div class="layui-form-item">
 									<button class="layui-btn" lay-submit lay-filter="loginForm">立即登陆</button>
-									<span style="padding-left: 20px">
+									<#--<span style="padding-left: 20px">
 										<a href="javascript:" id="forgetPwd">忘记密码?</a>
-									</span>
+									</span>-->
 								</div>
 							</form>
 				    	</div>

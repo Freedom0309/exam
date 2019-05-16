@@ -80,13 +80,27 @@
                         <span style="color: red">必填</span>
                     </div>
 
-                    <div class="layui-form-item">
+                    <#--<div class="layui-form-item">
                         <label class="layui-form-label">招生层次</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="level" lay-verify="required"
+                            <input type="text" name="levelxxx" lay-verify="required"
                                    placeholder="请输入招生层次" value="${school.level}"
                                    autocomplete="off" class="layui-input">
 
+                        </div>
+                        <span style="color: red">必填</span>
+                    </div>-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">招生层次</label>
+                        <div class="layui-input-inline">
+                            <select name="level" lay-filter="school" lay-verify="required">
+                                <option value="">请选择招生层次</option>
+                                <option value="一本" <#if (school.level == '一本')>selected="selected"</#if>>一本</option>
+                                <option value="二本" <#if (school.level == '二本')>selected="selected"</#if>>二本</option>
+                                <option value="三本" <#if (school.level == '三本')>selected="selected"</#if>>三本</option>
+                                <option value="专科" <#if (school.level == '专科')>selected="selected"</#if>>专科</option>
+
+                            </select>
                         </div>
                         <span style="color: red">必填</span>
                     </div>

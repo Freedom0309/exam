@@ -1,4 +1,5 @@
 server:
-  port: 8989
+#  port: 8989
+  port: 19994
 file:
-  path: D:\files
+  path: E:\files

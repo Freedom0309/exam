@@ -76,15 +76,12 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">学校分数线</label>
                         <div class="layui-input-inline">
-                            <#if schoolLine??>
-                                <input type="number" name="schoolLine" lay-verify="required|number"
-                                       placeholder="请输入分数线" value="${schoolLine.schoolLine?c}"
-                                       autocomplete="off" class="layui-input">
-                            <#else>
-                                <input type="number" name="schoolLine" lay-verify="required|number"
-                                       placeholder="请输入分数线" value=""
-                                       autocomplete="off" class="layui-input">
-                            </#if>
+
+                            <input type="number" name="schoolLine" lay-verify="required|number"
+                                   placeholder="请输入分数线"
+                                       <#if schoolLine??>value="${schoolLine.schoolLine?c}"</#if>
+                                   autocomplete="off" class="layui-input">
+
 
                         </div>
                         <span style="color: red">必填</span>
@@ -93,9 +90,18 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">文理科</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="artsScience" lay-verify="required"
-                                   value="${schoolLine.artsScience}"
-                                   autocomplete="off" class="layui-input">
+                        <#--<input type="text" name="artsScience" lay-verify="required"
+                               value="${schoolLine.artsScience}"
+                               autocomplete="off" class="layui-input">-->
+                            <select name="artsScience" lay-verify="required">
+                                <option value="">请选择文理科</option>
+                                <option value="文科" <#if (schoolLine.artsScience == '文科')>selected="selected"</#if>>文科
+                                </option>
+                                <option value="理科" <#if (schoolLine.artsScience == '理科')>selected="selected"</#if>>理科
+                                </option>
+
+                            </select>
+
 
                         </div>
                         <span style="color: red">必填</span>

@@ -72,8 +72,15 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">文理科</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="artsScience" lay-verify="required" value="${batch.artsScience}"
+                            <#--<input type="text" name="artsScience" lay-verify="required" value="${batch.artsScience}"
                                    autocomplete="off" class="layui-input">
+-->
+                            <select name="artsScience"  lay-verify="required">
+                                <option value="">请选择文理科</option>
+                                <option value="文科" <#if (batch.artsScience == '文科')>selected="selected"</#if>>文科</option>
+                                <option value="理科" <#if (batch.artsScience == '理科')>selected="selected"</#if>>理科</option>
+
+                            </select>
 
                         </div>
                         <span style="color: red">必填</span>
