@@ -31,6 +31,9 @@ public class SchoolController extends BaseController {
     @Autowired
     private ProfessionService professionService;
 
+    @Autowired
+    private BatchService batchService;
+
 
     @GetMapping("/form")
     public String form(@RequestParam(required = false) Integer id, ModelMap map) {
@@ -307,7 +310,9 @@ public class SchoolController extends BaseController {
     @GetMapping("/detail/{id}")
     public String schoolDetail(@PathVariable Integer id, ModelMap map){
         School school = schoolService.findById(id);
+        List<Batch> batches = batchService.findBySchool(school);
         map.put("school", school);
+        map.put("batches", batches);
         return "front/detail";
     }
 

@@ -2,6 +2,7 @@ package com.jcohy.exam.service.impl;
 
 import com.jcohy.exam.exception.ServiceException;
 import com.jcohy.exam.model.Batch;
+import com.jcohy.exam.model.School;
 import com.jcohy.exam.respository.BatchRepository;
 import com.jcohy.exam.service.BatchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ public class BatchServiceImpl implements BatchService {
 
     @Autowired
     private BatchRepository batchRepository;
+
+    @Override
+    public List<Batch> findBySchool(School school) {
+        return batchRepository.findBySchool(school);
+    }
 
     @Override
     public Page<Batch> findAll(Pageable pageable) {

@@ -2,6 +2,7 @@ package com.jcohy.exam.service;
 
 import com.jcohy.exam.exception.ServiceException;
 import com.jcohy.exam.model.Batch;
+import com.jcohy.exam.model.School;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -50,5 +51,12 @@ public interface BatchService {
      * @param id
      */
     void delete(Integer id);
+
+    /**
+     * 查询学校的所有批次
+     * @param school 学校
+     * @return 学校的所有批次
+     */
+    List<Batch> findBySchool(School school);
 
 }

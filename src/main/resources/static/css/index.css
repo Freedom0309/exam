@@ -9,6 +9,7 @@
 .blog-bg {
     position: relative;
     margin: 0 auto;
+    margin-top: 50px;
 }
 
 .bg_a {background-image: url("../images/bg/carousel1.jpg");}

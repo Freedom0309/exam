@@ -50,14 +50,15 @@ CREATE TABLE `batch` (
   `avg_batch` int(10) DEFAULT NULL COMMENT '平均录取位次',
   `low_score` int(10) DEFAULT NULL COMMENT '最低录取分数',
   `avg_score` int(10) DEFAULT NULL COMMENT '平均录取分数',
+  `school_id` int(10) DEFAULT NULL COMMENT '学校',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='批次表';
 
 -- ----------------------------
 -- Records of batch
 -- ----------------------------
-INSERT INTO `batch` VALUES ('3', '文科', '2019', '1', '1000', '800', '500', '503');
-INSERT INTO `batch` VALUES ('4', '理科', '2019', '1', '400', '400', '450', '450');
+INSERT INTO `batch` VALUES ('3', '文科', '2019', '1', '1000', '800', '500', '503', '20');
+INSERT INTO `batch` VALUES ('4', '理科', '2019', '1', '400', '400', '450', '450', '20');
 
 -- ----------------------------
 -- Table structure for comment
@@ -70,14 +71,6 @@ CREATE TABLE `comment` (
   `time` datetime DEFAULT NULL COMMENT '留言时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='留言板表';
-
--- ----------------------------
--- Records of comment
--- ----------------------------
-INSERT INTO `comment` VALUES ('7', '7', '你好啊 ', '2019-05-14 23:31:32');
-INSERT INTO `comment` VALUES ('8', '7', '怎么填报志愿呀？\n', '2019-05-14 23:47:28');
-INSERT INTO `comment` VALUES ('9', '7', '计算机科学的发展前景怎么样呢？', '2019-05-14 23:48:12');
-
 
 
 -- ----------------------------
@@ -224,3 +217,69 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localMysql
+Source Server Version : 50719
+Source Host           : localhost:3306
+Source Database       : exam1
+
+Target Server Type    : MYSQL
+Target Server Version : 50719
+File Encoding         : 65001
+
+Date: 2019-05-18 01:57:26
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for city
+-- ----------------------------
+DROP TABLE IF EXISTS `city`;
+CREATE TABLE `city` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL COMMENT '城市名称',
+  `province_id` int(11) DEFAULT NULL COMMENT '省份id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of city
+-- ----------------------------
+INSERT INTO `city` VALUES ('1', '西安', '1');
+INSERT INTO `city` VALUES ('2', '昆明市', '5');
+INSERT INTO `city` VALUES ('3', '北京市', '8');
+INSERT INTO `city` VALUES ('4', '铜川市', '1');
+INSERT INTO `city` VALUES ('5', '宝鸡市', '1');
+INSERT INTO `city` VALUES ('6', '咸阳市', '1');
+INSERT INTO `city` VALUES ('7', '渭南市', '1');
+INSERT INTO `city` VALUES ('8', '榆林市', '1');
+INSERT INTO `city` VALUES ('9', '宝鸡市', '1');
+INSERT INTO `city` VALUES ('10', '太原市', '4');
+INSERT INTO `city` VALUES ('11', '兰州市', '3');
+
+-- ----------------------------
+-- Table structure for province
+-- ----------------------------
+DROP TABLE IF EXISTS `province`;
+CREATE TABLE `province` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL COMMENT '省名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of province
+-- ----------------------------
+INSERT INTO `province` VALUES ('1', '陕西省');
+INSERT INTO `province` VALUES ('3', '甘肃省');
+INSERT INTO `province` VALUES ('4', '山西省');
+INSERT INTO `province` VALUES ('5', '云南省');
+INSERT INTO `province` VALUES ('6', '湖南省');
+INSERT INTO `province` VALUES ('7', '河南省');
+INSERT INTO `province` VALUES ('8', '北京市');
+

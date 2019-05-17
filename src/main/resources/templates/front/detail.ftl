@@ -60,7 +60,7 @@
                         <div class="article-detail shadow">
 
                             <div class="layui-form-item">
-                                <input type="hidden" name="id" value="${job.id}">
+                                <input type="hidden" name="id" value="${school.id}">
                             </div>
 
                             <div class="article-detail-title title">${school.name}</a></div>
@@ -70,35 +70,27 @@
                                 <p>类型：${school.type}</p>
                                 <p>网址：<a href="${school.url}" target="_blank">${school.url}</a></p>
                                 <p>地址：${school.address}</p>
+                                <#list batches as x>
+                                <p>
+                                    <span>文理科：${x.artsScience}</span>
+                                    <span>年份：${x.year?c}</span>
+                                    <span>批次：${x.batchNumber}</span>
+                                    <span>最低位次：${x.lowBatch}</span>
+                                    <span>平均位次：${x.avgBatch}</span>
+                                    <span>最低录取分：${x.lowScore}</span>
+                                    <span>平均录取分：${x.avgScore}</span>
+                                </p>
+                                </#list>
                             </div>
 
                             <div class="article-detail-content">
                             </div >
 
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <#--<button class="layui-btn" lay-submit lay-filter="send">立即投递</button>-->
-                                </div>
-                            </div>
 
                         </div>
                     </form>
                 </div>
 
-                <!--右边小栏目-->
-                <#--<div class="blog-main-right">
-                	<!--右边悬浮 平板或手机设备显示&ndash;&gt;
-                    <div class="category-toggle"><i class="fa fa-chevron-left"></i></div>
-                	<!-- 分类导航 &ndash;&gt;
-                	<div class="article-category shadow">
-                        <div class="article-category-title">分类导航</div>
-                        <a href="javascript:go(1)">杂文随笔</a>
-                        <a href="javascript:go(2)">JAVA基础</a>
-                        <a href="javascript:go(3)">Web前端</a>
-                        <a href="javascript:go(4)">My Sql</a>
-                        <div class="clear"></div>
-                    </div>
-                </div>-->
             </div>
             <div class="clear"></div>
         </div>

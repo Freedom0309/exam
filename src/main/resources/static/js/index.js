@@ -2,22 +2,24 @@
     var $ = layui.jquery;
 
     var width = width || window.innerWeight || document.documentElement.clientWidth || document.body.clientWidth;
-    width = width > 1200 ? 1170 : (width > 992 ? 962 : width);
+    width = width > 1200 ? 1367 : (width > 992 ? 962 : width);
     var carousel = layui.carousel;
     //建造实例
     carousel.render({
         elem: '#carousel'
         , width: width + 'px' //设置容器宽度
-        , height: '360px'
+        // , width: '100%'
+        , height: '400px'
         , indicator: 'inside'
         , arrow: 'always' //始终显示箭头
         , anim: 'default' //切换动画方式
+        ,interval: '40000'
 
     });
 
     $(function () {
         //播放公告
-        playAnnouncement(5000);
+        playAnnouncement(3000);
     });
 
     function playAnnouncement(interval) {

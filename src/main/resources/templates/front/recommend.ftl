@@ -113,19 +113,28 @@
                             <div class="layui-form-item">
 
                                 <div class="layui-inline" style="background: #ffffff;">
+                                    <label class="layui-form-label">省份</label>
+                                    <div class="layui-input-inline" style="">
+                                        <select name="provinceId" lay-filter="province" lay-verify="required" lay-search="">
+                                            <option value="">请选省份</option>
+                                            <#list provinces as x>
+                                                <option value="${x.id}">${x.name}</option>
+                                            </#list>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+
+                                <div class="layui-inline" style="background: #ffffff;">
                                     <label class="layui-form-label">城市</label>
                                     <div class="layui-input-inline" style="">
-                                        <select name="city" lay-verify="required" lay-search="">
+                                        <select name="city" id="city" lay-verify="required" lay-search="">
                                             <option value="">请选择城市</option>
-                                            <option value="西安">西安</option>
-                                            <option value="咸阳">咸阳</option>
-                                            <option value="渭南">渭南</option>
-                                            <option value="铜川">铜川</option>
-                                            <option value="汉中">汉中</option>
-                                            <option value="商洛">商洛</option>
-                                            <option value="安康">安康</option>
-                                            <option value="延安">延安</option>
-                                            <option value="榆林">榆林</option>
+                                            <#list cities as x >
+                                                <option value="${x.name}">${x.name}</option>
+                                            </#list>
                                         </select>
                                     </div>
                                 </div>
@@ -245,6 +254,36 @@
                 return false;
             });
 
+            form.on('select(province)', function (data) {
+                console.log(data.field)
+                var id = $('select[name=provinceId]').val();
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "/city/getCity",
+                    data: {
+                        provinceId: id
+                    },
+                    success: function (d) {
+                        if(d.isOk){
+                            createCity(d.data);
+                            form.render();
+                        }else {
+                            layer.msg(d.msg, {anim: 6})
+                        }
+                    }
+                });
+            })
+
+            function createCity(data) {
+                obj = $("#city");
+                obj.empty();
+                var city = "<option value=''>请选择城市</option>";
+                $.each(data, function (i, o) {
+                    city += "<option value='"+o.name+"'>"+o.name+"</option>";
+                })
+                obj.append(city);
+            }
             function createHtml(data) {
                 obj = $("#jobList");
                 obj.empty();
@@ -275,6 +314,7 @@
                 }*/
                 obj.append(detailHtml);
             }
+
         });
     </script>
 </body>

@@ -12,23 +12,24 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         , url: '/batch/list' //数据接口
         , page: true //开启分页
         , cols: [[ //表头
-            {field: 'year', align: 'center', title: '年份', sort: true, unresize: false}
+            // {field: 'schoolName', align: 'center', title: '学校', sort: true, unresize: false,  templet: function(d){console.log(d);return d.school;}}
+             {field: 'year', align: 'center', title: '年份', sort: true, unresize: false}
             , {field: 'batchNumber', align: 'center', title: '批次', sort: true, unresize: false}
             , {field: 'artsScience', align: 'center', title: '文理科', sort: true, unresize: false}
             , {field: 'lowBatch', align: 'center', title: '最低录取批次', sort: true, unresize: false}
             , {field: 'avgBatch', align: 'center', title: '平均录取批次', sort: true, unresize: false}
             , {field: 'lowScore', align: 'center', title: '最低录取批次', sort: true, unresize: false}
             , {field: 'avgScore', align: 'center', title: '平均录取批次', sort: true, unresize: false}
-            , {fixed: 'right', title: '操作', align: 'center', width: '300', toolbar: '#operator', unresize: false}
+            , {fixed: 'right', title: '操作', align: 'center', width: '300', toolbar: '#operator', fixed: 'right'}
         ]]
         , id: 'batchTable'
         , page: {
             // count: data.length,
-            layout: ['prev', 'page', 'next', 'skip', 'limit', 'count'], //自定义分页布局
+            layout: [ 'page',  'limit', 'count'], //自定义分页布局
             // curr: 1, //设定初始在第 5 页
-            groups: 3, //只显示 1 个连续页码
-            first: true, //不显示首页
-            last: false, //不显示尾页
+            //groups: 3, //只显示 1 个连续页码
+            //first: true, //不显示首页
+            //last: false, //不显示尾页
             limit: 10,
             limits: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
         }

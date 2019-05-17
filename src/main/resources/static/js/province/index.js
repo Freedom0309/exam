@@ -5,26 +5,22 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         util = layui.util,
         table = layui.table;
     table.render({
-        elem: '#school'
+        elem: '#province'
         , height: 'full-100'
         , method: 'GET'
-        , url: '/profession/list' //数据接口
-        , page: true //开启分页
+        , url: '/province/list' //数据接口
+        // , page: true //开启分页
         , cols: [[ //表头
-            {field: 'name', align: 'center', title: '专业名称', unresize: true}
-            , {field: 'description', align: 'center', title: '专业描述', unresize: true}
-            , {field: 'future', align: 'center', title: '专业前景', unresize: true}
-            , {field: 'compensation', align: 'center', title: '平均薪资', unresize: true}
+            {field: 'name', align: 'center', title: '省份名称', unresize: true}
             , {fixed: 'right', title: '操作', align: 'center', width: '200', toolbar: '#operator', unresize: true}
         ]]
-        , id: 'professionTable'
         , page: {
             // count: data.length,
-            layout: [ 'page',  'limit', 'count'], //自定义分页布局
+            layout: ['page', 'limit', 'count'], //自定义分页布局
             // curr: 1, //设定初始在第 5 页
-            //groups: 3, //只显示 1 个连续页码
-            //first: true, //不显示首页
-            //last: false, //不显示尾页
+            // groups: 3, //只显示 1 个连续页码
+            // first: true, //显示首页
+            // last: false, //不显示尾页
             limit: 10,
             limits: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
         }
@@ -36,7 +32,7 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         if (obj.event === 'del') {
             del(data.id);
         } else if (obj.event === 'edit') {
-            common.frame_show('编辑', '/profession/form?id=' + data.id);
+            common.frame_show('编辑', '/province/form?id=' + data.id);
         }
     });
 
@@ -53,7 +49,7 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
             });
         },
         editData: function (id) {
-            common.frame_show('编辑', '/admin/profession/form?id=' + id);
+            common.frame_show('编辑', '/admin/province/form?id=' + id);
         }
     };
 
@@ -62,7 +58,7 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         var index = layer.load(1);
         setTimeout(function () {
             layer.close(index);
-            common.frame_show('添加', '/profession/form');
+            common.frame_show('添加', '/province/form');
         }, 500);
     });
 
@@ -73,7 +69,7 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
             $.ajax({
                 type: "DELETE",
                 dataType: "json",
-                url: "/profession/del/" + id,
+                url: "/province/del/" + id,
                 success: function (ret) {
                     if (ret.isOk) {
                         layer.msg("删除成功", {time: 2000}, function () {
@@ -90,5 +86,5 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         });
     }
 
-    exports('profession/index', datalist);
+    exports('province/index', datalist);
 });

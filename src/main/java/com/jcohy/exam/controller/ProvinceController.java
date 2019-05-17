@@ -2,8 +2,10 @@ package com.jcohy.exam.controller;
 
 import com.jcohy.exam.common.JsonResult;
 import com.jcohy.exam.common.PageJson;
-import com.jcohy.exam.model.*;
-import com.jcohy.exam.service.*;
+import com.jcohy.exam.model.City;
+import com.jcohy.exam.model.Province;
+import com.jcohy.exam.service.CityService;
+import com.jcohy.exam.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,29 +16,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/scoreline")
-public class ScorelineController extends BaseController {
+@RequestMapping("/province")
+public  class ProvinceController extends BaseController{
 
     @Autowired
-    private ScorelineService scorelineService;
+    private CityService cityService;
 
+    @Autowired
+    private ProvinceService provinceService;
 
     @GetMapping("/form")
     public String form(@RequestParam(required = false) Integer id, ModelMap map) {
-        List<Scoreline> scorelines = scorelineService.findAll();
-        map.put("scorelines", scorelines);
         if (id != null) {
-            Scoreline scoreline = scorelineService.findById(id);
-            map.put("scoreline", scoreline);
+            Province province = provinceService.findById(id);
+            map.put("province", province);
         }
-        return "admin/scoreline/form";
+        return "admin/province/form";
     }
 
     @PostMapping("/save")
     @ResponseBody
-    public JsonResult save(Scoreline scoreline) {
+    public JsonResult save(Province province) {
         try {
-            scorelineService.saveOrUpdate(scoreline);
+            provinceService.saveOrUpdate(province);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.fail(e.getMessage());
@@ -44,29 +46,13 @@ public class ScorelineController extends BaseController {
         return JsonResult.ok();
     }
 
-    /**
-     * 查询所有学校
-     *
-     * @return
-     */
-    @GetMapping("/list")
-    @ResponseBody
-    public PageJson<Scoreline> all() {
-        PageRequest pageRequest = getPageRequest();
-        Page<Scoreline> scorelines = scorelineService.findAll(pageRequest);
-        PageJson<Scoreline> page = new PageJson<>();
-        page.setCode(0);
-        page.setMsg("成功");
-        page.setCount(scorelines.getSize());
-        page.setData(scorelines.getContent());
-        return page;
-    }
+
 
     @DeleteMapping("/del/{id}")
     @ResponseBody
-    public JsonResult deleteScoreline(@PathVariable("id") Integer id) {
+    public JsonResult deleteCity(@PathVariable("id") Integer id) {
         try {
-            scorelineService.delete(id);
+            provinceService.deleteById(id);
             return JsonResult.ok("删除成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,21 +61,34 @@ public class ScorelineController extends BaseController {
     }
 
     /**
-     * 更新学院信息
+     * 更新城市信息
      *
-     * @param scoreline
+     * @param province
      * @return
      */
     @PostMapping("/update")
     @ResponseBody
-    public JsonResult update(Scoreline scoreline) {
+    public JsonResult update(Province province) {
         try {
-            Scoreline sch = scorelineService.saveOrUpdate(scoreline);
-            return JsonResult.ok().set("data", sch);
+            Province bth = provinceService.saveOrUpdate(province);
+            return JsonResult.ok().set("data", bth);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.fail(e.getMessage());
         }
+    }
+
+    @GetMapping("/list")
+    @ResponseBody
+    public PageJson<Province> all() {
+        PageRequest pageRequest = getPageRequest();
+        Page<Province> provinces = provinceService.findAll(pageRequest);
+        PageJson<Province> page = new PageJson<>();
+        page.setCode(0);
+        page.setMsg("成功");
+        page.setCount(provinces.getSize());
+        page.setData(provinces.getContent());
+        return page;
     }
 
     /**
@@ -101,12 +100,11 @@ public class ScorelineController extends BaseController {
     @GetMapping("/getAll")
     public JsonResult getAll() {
         try {
-            List<Scoreline> list = scorelineService.findAll();
+            List<Province> list = provinceService.findAll();
             return JsonResult.ok().set("data", list);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.fail(e.getMessage());
         }
     }
-
 }

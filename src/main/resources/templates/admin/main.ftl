@@ -45,51 +45,14 @@
                         <a href="javascript:;"><i class="fa fa-home"></i>首页</a>
                     </li>
 
-                    <#--<li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-user"></i>求职者管理</a>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-user"></i>地理管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/lab/index" data-id="1">求职者账户管理</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/plan/index" data-id="2">求职者简历管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/province/index" data-id="1">省份管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/city/index" data-id="2">城市管理</a></dd>
                         </dl>
                     </li>
 
-                    <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-user"></i>学院管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/addcollege/index" data-id="3">新增学院账户</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/college/index" data-id="4">学院账户管理</a></dd>
-                        </dl>
-                    </li>-->
-
-                    <#--<li class="layui-nav-item">-->
-                        <#--<a href="javascript:;"><i class="fa fa-user"></i>招聘信息管理</a>-->
-                        <#--<dl class="layui-nav-child">-->
-                            <#--<dd><a href="javascript:;" data-url="${ctx!}/admin/managereq/index" data-id="5">请求审核</a></dd>-->
-                            <#--<dd><a href="javascript:;" data-url="${ctx!}/admin/job/index" data-id="6">职位管理</a></dd>-->
-                            <#--<dd><a href="javascript:;" data-url="${ctx!}/admin/check/index" data-id="7">应聘人员审核</a></dd>-->
-                        <#--</dl>-->
-                    <#--</li>-->
-
-               <#--     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-user"></i>招聘信息管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/job/index" data-id="6">职位管理</a></dd>
-                        </dl>
-                    </li>-->
-
-                   <#-- <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-user"></i>审核管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/managereq/index" data-id="5">请求审核</a></dd>
-                        </dl>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-user"></i>应聘人员审核</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/check/index" data-id="7">应聘人员审核</a></dd>
-                        </dl>
-                    </li>-->
 
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>学校信息</a>
