@@ -7,10 +7,7 @@ layui.use(['jquery','form','util','upload','laydate'], function () {
      upload = layui.upload;
 
     laydate.render({
-        elem: '#resumebirth' //指定元素
-    });
-    laydate.render({
-        elem: '#birth' //指定元素
+        // elem: '#birth' //指定元素
     });
 
     var user = MyLocalStorage.get("user");
@@ -24,7 +21,7 @@ layui.use(['jquery','form','util','upload','laydate'], function () {
     	$("#name").val(user.name);
     	$("#phone").val(user.phone);
     	$("#email").val(user.email);
-        $("#birth").val(user.birth);
+        $("#birth").val(user.birth.substr(0,10));
 
         if(user.sex == "女"){
         	sex = 1;
@@ -38,72 +35,6 @@ layui.use(['jquery','form','util','upload','laydate'], function () {
     	location.href =  "/user/login";
     }
 
-    // 我的投递
-    $.ajax({
-		type: 'GET',
-		data: {"userId":user.id},
-		async:true,
-		url: "/jobSeeker/deliveryRecord",
-		success:function(result) {
-			if (result.isOk) {
-				console.log(result.data);
-				var data = result.data;
-				var html = '';
-				for (var i=0; i<data.length; i++) {
-					var status = '';
-
-					if(data[i].status === 0){
-                        status="【已投递，待审核】"
-					}else if(data[i].status === 1){
-                        status="【人事部已查看，人事部未通过】"
-					}else if(data[i].status === 2){
-                        status="【人事部已查看，人事部通过，待面试】"
-                    }else if(data[i].status === 3){
-                        status="【学院已通过，恭喜你！！】"
-                    }else if(data[i].status === 4){
-                        status="【学院未通过，继续加油！！】"
-                    }
-
-					html +=
-						'<li id='+data[i].id+'> '+
-						'<blockquote class="layui-elem-quote">'+
-						'<span>'+data[i].jobSeeker.name+'</span>投递了'+'' +
-						'<a href="/jobSeeker/job/'+data[i].job.id+'">【'+data[i].job.name+"/"+data[i].job.location+"/"+data[i].job.numbers+"/"+data[i].job.treatment+'】'+
-                        '<span style="color: red">'+status+'</span>'+
-						'</a></blockquote>'+
-						'<p><span>'+data[i].deliveryTime+'</span>'+
-						'<a href="javascript:msgDel(\''+data[i].id+'\');" class="layui-btn layui-btn-sm layui-btn-danger">取消投递</a></p>'+
-						'</li>';
-
-				}
-				$(".msgs").html(html);
-			} else {
-				layer.msg(result.msg,{anim:6});
-			}
-		}
-	});
-
-    // 修改简历
-    form.on('submit(resume)', function(data){
-        data = data.field;
-        console.log(data);
-        $.ajax({
-            type: 'POST',
-            data: data,
-            async:true,
-            url: "/jobSeeker/addResume",
-            success:function(result) {
-                if (result.isOk) {
-                    MyLocalStorage.put("user", JSON.stringify(result.data), 360*24*3);
-                    layer.msg("修改成功!",{icon:1});
-                    window.location.href = "/user/index";
-                } else {
-                    layer.msg(result.msg,{anim:6});
-                }
-            }
-        });
-        return false;
-    });
 
     // 修改个人资料
     form.on('submit(formInfo)', function(data){
@@ -205,22 +136,6 @@ layui.use(['jquery','form','util','upload','laydate'], function () {
 	// 	$(".msgs").empty();
 	// });
 });
-
-//取消投递
-function msgDel(id) {
-	$.ajax({
-		type: 'GET',
-		data: {id:id},
-		url: "/jobSeeker/deleteRecord",
-		success:function(result) {
-			if (result.isOk) {
-				$("#"+id).remove();
-			} else {
-				layer.msg(result.msg,{anim:6,icon:5});
-			}
-		}
-	});
-}
 
 //更换邮箱
 // function updateEmail() {

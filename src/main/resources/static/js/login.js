@@ -1,6 +1,10 @@
-layui.use(['jquery','form'], function () {
+layui.use(['jquery','form','laydate'], function () {
     var $ = layui.jquery;
-    var form = layui.form;
+    var form = layui.form, laydate = layui.laydate;
+    laydate.render({
+        // elem: '#birth' //指定元素
+    });
+
     // //获取验证码
     // $(function(){
     // 	$.ajax({
@@ -80,7 +84,7 @@ layui.use(['jquery','form'], function () {
     		type: 'post',
     		data: data,
     		async:true,
-    		url: "/jobSeeker/resetPwd/send",
+    		url: "/jobSeeker/resetPwd",
     		success:function(result) {
     			if (result.isOk) {
     				layer.alert('已将密码重置地址发至您的邮箱,请注意查收', {icon: 1,anim: 1});
@@ -91,5 +95,7 @@ layui.use(['jquery','form'], function () {
     	});
     	return false;
     });
+
+
 });
 

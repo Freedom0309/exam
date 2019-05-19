@@ -10,6 +10,8 @@
     <link href="${ctx!}/layui/css/layui.css" rel="stylesheet" />
     <!--font-awesome-->
     <link href="${ctx!}/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="${ctx!}/webjars/bootstrap/4.0.0/css/bootstrap.css" rel="stylesheet"/>
+    <link href="${ctx!}/webjars/bootstrap-datetimepicker/2.4.2/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
     <!--全局样式表-->
     <link href="${ctx!}/css/global.css" rel="stylesheet" />
 </head>
@@ -112,14 +114,18 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">出生日期</label>
                                     <div class="layui-input-inline">
-                                        <input id="birth" type="text" lay-verify="date" name="births" autocomplete="off" class="layui-input">
+                                        <input id="birth" type="text"
+                                               placeholder="yyyy-MM-dd" name="births" autocomplete="off"
+                                               class="form-control">
                                     </div>
                                 </div>
 
+
+
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">电话</label>
+                                    <label class="layui-form-label">手机号</label>
                                     <div class="layui-input-inline">
-                                        <input type="password" name="phone" required lay-verify="number" autocomplete="off"
+                                        <input type="text" name="phone" required lay-verify="number|phone" autocomplete="off"
                                                class="layui-input">
                                     </div>
                                 </div>
@@ -179,10 +185,17 @@
     <div class="blog-mask animated layui-hide"></div>
     <!-- layui.js -->
     <script src="${ctx!}/layui/layui.js"></script>
+    <!--bootstrap.js-->
+    <script src="${ctx!}/webjars/jquery/3.0.0/jquery.js" type="text/javascript"></script>
+    <script src="${ctx!}/webjars/bootstrap/4.0.0/js/bootstrap.js" type="text/javascript"></script>
+    <script src="${ctx!}/webjars/bootstrap-datetimepicker/2.4.2/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="${ctx!}/webjars/bootstrap-datetimepicker/2.4.2/js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+
     <!-- 全局脚本 -->
     <script src="${ctx!}/js/global.js"></script>
     <script src="${ctx!}/js/canvas-particle.js"></script>
     <!-- 本页脚本 -->
     <script src="${ctx!}/js/login.js"></script>
+    <script src="${ctx!}/js/datetime.js"></script>
 </body>
 </html>

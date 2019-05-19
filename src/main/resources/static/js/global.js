@@ -109,7 +109,7 @@
     });
     
     
-    // 退出
+    /*// 退出
     $(".user-out").click(function(){
     	MyLocalStorage.remove("user");
     	isUser();
@@ -117,7 +117,7 @@
     	if (url.indexOf("user.html")>=1) {
     		window.location.href="/user/login"
     	}
-    });
+    });*/
     
     // 判断用户是否登陆
     function isUser() {
@@ -128,6 +128,15 @@
     		$(".blog-user").append('<a href="/"><img src="/images/login.png" alt="" title="" /></a>'+
             	'<a class="user-out"><i class="fa fa-sign-out"></i></a>');
     		$(".btn-comment").removeClass("layui-hide");
+            // 退出
+            $(".user-out").click(function(){
+                MyLocalStorage.remove("user");
+                isUser();
+                var url = window.location.href;
+                if (url.indexOf("user.html")>=1) {
+                    window.location.href="/user/login"
+                }
+            });
     	} else {
     		$(".blog-user").empty();
     		$(".blog-user").append('<a href="/user/login"><i class="fa fa-user-circle-o"></i></a>'+
