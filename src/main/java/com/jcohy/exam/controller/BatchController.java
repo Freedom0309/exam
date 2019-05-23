@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -66,6 +67,11 @@ public class BatchController extends BaseController {
                 Integer.valueOf(limit));
         
         Page<Batch> batchs = batchService.findAll(pageRequest);
+        Iterator<Batch> iterator = batchs.iterator();
+        while (iterator.hasNext()){
+            Batch batch = iterator.next();
+            batch.setSchoolName(batch.getSchool().getName());
+        }
         PageJson<Batch> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");

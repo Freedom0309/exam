@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> - 学生信息</title>
+    <title> - 省信息</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -41,7 +41,7 @@
                     <div class="layui-form-item" style="margin-top: 10px">
                         <label class="layui-form-label">省份名称</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="name" lay-verify="required"  placeholder="请输入身份名称"
+                            <input type="text" name="name" lay-verify="required"  placeholder="请输入省份名称"
                                    value="${province.name}"
                                    autocomplete="off" class="layui-input ">
                         </div>
