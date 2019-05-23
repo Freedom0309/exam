@@ -1,7 +1,6 @@
 package com.jcohy.exam.service;
 
 import com.jcohy.exam.exception.ServiceException;
-import com.jcohy.exam.model.College;
 import com.jcohy.exam.model.School;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
