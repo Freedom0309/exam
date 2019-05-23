@@ -28,8 +28,13 @@ public class SchoolLineServiceImpl implements SchoolLineService {
     }
 
     @Override
-    public List<Object[]> findAllSchoolLine() {
-        return schoolLineRepository.findAllSchoolLine();
+    public long count() {
+        return schoolLineRepository.count();
+    }
+
+    @Override
+    public List<Object[]> findAllSchoolLine(Integer page, Integer size) {
+        return schoolLineRepository.findAllSchoolLine(page, size);
     }
 
     @Override

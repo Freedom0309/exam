@@ -89,7 +89,9 @@ public class SchoolLineController extends BaseController {
     public PageJson<SchoolLine> all() {
         PageRequest pageRequest = getPageRequest();
         List<SchoolLine> schoolLines = new ArrayList<>();
-        List<Object[]> objs = schoolLineService.findAllSchoolLine();
+        List<Object[]> objs = schoolLineService.
+                findAllSchoolLine(pageRequest.getPageNumber() * pageRequest.getPageSize(),
+                        pageRequest.getPageSize());
         if(objs.size() > 0){
             for (Object[] obj : objs) {
                 SchoolLine schoolLine = new SchoolLine();
@@ -104,7 +106,7 @@ public class SchoolLineController extends BaseController {
         PageJson<SchoolLine> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(schoolLines.size());
+        page.setCount(((int) schoolLineService.count()));
         page.setData(schoolLines);
         return page;
     }
