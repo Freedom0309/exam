@@ -68,7 +68,7 @@ public class ProfessionController extends BaseController {
         PageJson<Profession> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(professions.getSize());
+        page.setCount(((int) professions.getTotalElements()));
         page.setData(professions.getContent());
         return page;
     }

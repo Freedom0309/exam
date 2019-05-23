@@ -15,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -52,22 +54,21 @@ public class CityController extends BaseController {
         return JsonResult.ok();
     }
 
-    /**
-     * 查询所有
-     *
-     * @return
-     */
-    @GetMapping("/list")
+
+    @RequestMapping("/list")
     @ResponseBody
-    public PageJson<City> all() {
+    public PageJson<City> findAll(HttpServletRequest request) {
+
+        //分页查询，从第0页开始查找
         PageRequest pageRequest = getPageRequest();
-        Page<City> cities = cityService.findAll(pageRequest);
-        PageJson<City> page = new PageJson<>();
-        page.setCode(0);
-        page.setMsg("成功");
-        page.setCount(cities.getSize());
-        page.setData(cities.getContent());
-        return page;
+        Page<City> cityList = cityService.findAll(pageRequest);
+        //返回给前台的数据格式
+        PageJson<City> pages = new PageJson<>();
+        pages.setCode(0);
+        pages.setMsg("成功");
+        pages.setCount((int)cityList.getTotalElements());
+        pages.setData(cityList.getContent());
+        return pages;
     }
 
     @DeleteMapping("/del/{id}")

@@ -106,6 +106,7 @@
     <script src="${ctx!}/js/global.js"></script>
     <script src="${ctx!}/js/canvas-particle.js"></script>
     <!-- 本页脚本 -->
-    <script src="${ctx!}/js/resetPwd.js"></script>
+    <script src="${ctx!}/js/
+    .js"></script>
 </body>
 </html>

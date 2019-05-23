@@ -57,7 +57,7 @@ public class ScorelineController extends BaseController {
         PageJson<Scoreline> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(scorelines.getSize());
+        page.setCount(((int) scorelines.getTotalElements()));
         page.setData(scorelines.getContent());
         return page;
     }

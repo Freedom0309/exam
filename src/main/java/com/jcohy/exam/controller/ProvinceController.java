@@ -86,7 +86,7 @@ public  class ProvinceController extends BaseController{
         PageJson<Province> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(provinces.getSize());
+        page.setCount(((int) provinces.getTotalElements()));
         page.setData(provinces.getContent());
         return page;
     }

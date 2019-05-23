@@ -1,27 +1,31 @@
 layui.define(['layer', 'table', 'common', 'util'], function (exports) {
-    var $ = layui.jquery,
-        layer = layui.layer,
-        common = layui.common,
-        util = layui.util,
-        table = layui.table;
+    var table = layui.table;
+    var form=layui.form;
+    var laypage=layui.laypage;
+    var layer=layui.layer;
+    var element = layui.element;
+    var upload = layui.upload;
+    var common = layui.common;
+    var $ = layui.$;
     table.render({
         elem: '#city'
         , height: 'full-100'
         , method: 'GET'
         , url: '/city/list' //数据接口
-        , page: true //开启分页
+        //, page: true //开启分页
+        , limit: Number.MAX_VALUE
         , cols: [[ //表头
             {field: 'name', align: 'center', title: '城市名称', unresize: true}
             , {fixed: 'right', title: '操作', align: 'center', width: '200', toolbar: '#operator', unresize: true}
         ]]
+        ,page: true
         , page: {
-            // count: data.length,
-            layout: [ 'page', 'limit', 'count'], //自定义分页布局
+            layout: [ 'limit', 'count', 'prev', 'page', 'next', 'skip'], //自定义分页布局
             // curr: 1, //设定初始在第 5 页
-            // groups: 3, //只显示 1 个连续页码
-            // first: true, //显示首页
-            // last: false, //不显示尾页
-            limit: 10,
+            groups: 3, //只显示 1 个连续页码
+            first: true, //显示首页
+            last: true, //不显示尾页
+            limit: 5,
             limits: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
         }
 

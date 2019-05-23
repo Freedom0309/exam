@@ -56,4 +56,9 @@ public class CityServiceImpl implements CityService {
     public Page<City> findAll(Pageable pageable) {
         return cityRespository.findAll(pageable);
     }
+
+    @Override
+    public Integer count() {
+        return (int)cityRespository.count();
+    }
 }

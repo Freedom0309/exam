@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -57,13 +58,18 @@ public class BatchController extends BaseController {
      */
     @GetMapping("/list")
     @ResponseBody
-    public PageJson<Batch> all() {
-        PageRequest pageRequest = getPageRequest();
+    public PageJson<Batch> all(HttpServletRequest request) {
+        
+        String pa = request.getParameter("page");
+        String limit = request.getParameter("limit");
+        PageRequest pageRequest = PageRequest.of(Integer.valueOf(pa) -1,
+                Integer.valueOf(limit));
+        
         Page<Batch> batchs = batchService.findAll(pageRequest);
         PageJson<Batch> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(batchs.getSize());
+        page.setCount(((int) batchs.getTotalElements()));
         page.setData(batchs.getContent());
         return page;
     }

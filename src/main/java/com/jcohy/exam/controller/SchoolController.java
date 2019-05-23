@@ -71,7 +71,7 @@ public class SchoolController extends BaseController {
         PageJson<School> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(schools.getSize());
+        page.setCount(((int) schools.getTotalElements()));
         page.setData(schools.getContent());
         return page;
     }

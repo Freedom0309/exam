@@ -34,7 +34,6 @@ public class BaseController {
             pageSize = Integer.parseInt(pageSizeStr);
         }
 
-//        return new PageRequest(pageNumber, pageSize);
         return PageRequest.of(pageNumber, pageSize);
     }
 }

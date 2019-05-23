@@ -23,5 +23,7 @@ public interface CityService {
     List<City> findAll();
 
 
-    public Page<City> findAll(Pageable pageable);
+    Page<City> findAll(Pageable pageable);
+
+    Integer count();
 }
