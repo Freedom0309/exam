@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Enumeration;
 import java.util.List;
 
 @Controller
@@ -32,7 +33,7 @@ public class CommentController {
     public JsonResult save(Comment comment, HttpSession session, HttpServletRequest request){
         try {
             JobSeeker user = (JobSeeker)session.getAttribute("user");
-            request.getSession().getAttributeNames();
+            Enumeration<String> attributeNames = request.getSession().getAttributeNames();
             comment.setJobSeeker(user);
             comment.setTime(DateUtils.strToDate(DateUtils.getCurrentDateStr()));
             commentService.saveOrUpdate(comment);

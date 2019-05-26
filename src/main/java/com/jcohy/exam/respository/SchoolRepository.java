@@ -1,7 +1,9 @@
 package com.jcohy.exam.respository;
 
+import com.jcohy.exam.model.College;
 import com.jcohy.exam.model.School;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

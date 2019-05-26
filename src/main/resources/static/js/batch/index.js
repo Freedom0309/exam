@@ -11,8 +11,8 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         , method: 'GET'
         , url: '/batch/list' //数据接口
         , cols: [[ //表头
-            {field: 'schoolName', align: 'center', title: '学校', sort: true, unresize: false}
-            ,{field: 'year', align: 'center', title: '年份', sort: true, unresize: false}
+            {field: 'schoolName', align: 'center', title: '学校', sort: true, unresize: false,  templet: function(d){console.log(d);return d.school;}}
+            , {field: 'year', align: 'center', title: '年份', sort: true, unresize: false}
             , {field: 'batchNumber', align: 'center', title: '批次', sort: true, unresize: false}
             , {field: 'artsScience', align: 'center', title: '文理科', sort: true, unresize: false}
             , {field: 'lowBatch', align: 'center', title: '最低录取批次', sort: true, unresize: false}

@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> - 专业分数线信息</title>
+    <title> - 学校分数线信息</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -74,7 +74,7 @@
 
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">专业分数线</label>
+                        <label class="layui-form-label">学校分数线</label>
                         <div class="layui-input-inline">
 
                             <input type="number" name="schoolLine" lay-verify="required|number"

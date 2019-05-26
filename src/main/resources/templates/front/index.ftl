@@ -327,14 +327,19 @@
             });
             return false;
         });
+        var user = MyLocalStorage.get("user");
         function createComment(data) {
+            user = JSON.parse(user);
             obj = $("#card");
             obj.empty();
             var detailHtml = '';
             for (var i = 0; i < data.length; i++) {
 
                 detailHtml += '<div class="layui-card">';
-                detailHtml += '<div class="layui-card-header">'+data[i].jobSeeker.name+'&nbsp;&nbsp;留言时间：&nbsp;&nbsp;'+ data[i].time +'</div>';
+                if(user != null && user != ''){
+                detailHtml += '<div class="layui-card-header">'+user.name+'&nbsp;&nbsp;留言时间：&nbsp;&nbsp;'+ data[i].time +'</div>';
+
+                }
                 detailHtml += '<div class="layui-card-body">'+data[i].content+ '</div>';
 
                 detailHtml += '</div>';

@@ -42,6 +42,14 @@ public class Batch implements Serializable {
     @Transient
     private String schoolName;
 
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -119,13 +127,5 @@ public class Batch implements Serializable {
 
     public void setSchool(School school) {
         this.school = school;
-    }
-
-    public String getSchoolName() {
-        return schoolName;
-    }
-
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
     }
 }

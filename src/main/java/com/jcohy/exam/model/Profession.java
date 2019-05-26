@@ -1,17 +1,14 @@
 package com.jcohy.exam.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * 专业信息
  */
 @Entity
 @Table(name = "profession")
-public class Profession implements Serializable {
+public class Profession {
 
-
-    private static final long serialVersionUID = 2437852592613223543L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
