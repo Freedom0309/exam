@@ -73,7 +73,7 @@
                         <label class="layui-form-label">学校网址</label>
                         <div class="layui-input-inline">
                             <input type="url" name="url" lay-verify="required|url"
-                                   placeholder="请输入网址" value="${school.url}"
+                                   placeholder="http://www.example.com" value="${school.url}"
                                    autocomplete="off" class="layui-input">
 
                         </div>

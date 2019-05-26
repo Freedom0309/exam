@@ -17,7 +17,9 @@ public interface SchoolLineService {
      */
     Page<SchoolLine> findAll(Pageable pageable);
 
-    List<Object[]> findAllSchoolLine();
+    List<Object[]> findAllSchoolLine(Integer page, Integer size);
+
+    long count();
 
     /**
      *  查询

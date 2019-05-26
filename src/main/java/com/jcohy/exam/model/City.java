@@ -1,10 +1,11 @@
 package com.jcohy.exam.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "city")
-public class City {
+public class City implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +18,16 @@ public class City {
   @ManyToOne
   private Province province;
 
+  @Transient
+  private String provinceName;
+
+  public String getProvinceName() {
+    return provinceName;
+  }
+
+  public void setProvinceName(String provinceName) {
+    this.provinceName = provinceName;
+  }
 
   public Integer getId() {
     return id;

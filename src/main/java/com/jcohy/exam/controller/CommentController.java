@@ -33,7 +33,6 @@ public class CommentController {
     public JsonResult save(Comment comment, HttpSession session, HttpServletRequest request){
         try {
             JobSeeker user = (JobSeeker)session.getAttribute("user");
-            Enumeration<String> attributeNames = request.getSession().getAttributeNames();
             comment.setJobSeeker(user);
             comment.setTime(DateUtils.strToDate(DateUtils.getCurrentDateStr()));
             commentService.saveOrUpdate(comment);

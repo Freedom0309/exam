@@ -15,7 +15,8 @@ layui.define(['layer', 'table', 'common', 'util'], function (exports) {
         //, page: true //开启分页
         , limit: Number.MAX_VALUE
         , cols: [[ //表头
-            {field: 'name', align: 'center', title: '城市名称', unresize: true}
+            {field: 'provinceName', align: 'center', title: '省名称', unresize: true}
+            , {field: 'name', align: 'center', title: '城市名称', unresize: true}
             , {fixed: 'right', title: '操作', align: 'center', width: '200', toolbar: '#operator', unresize: true}
         ]]
         ,page: true

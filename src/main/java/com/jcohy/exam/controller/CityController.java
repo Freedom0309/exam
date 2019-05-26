@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -57,11 +58,17 @@ public class CityController extends BaseController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public PageJson<City> findAll(HttpServletRequest request) {
+    public PageJson<City> findAll() {
 
         //分页查询，从第0页开始查找
         PageRequest pageRequest = getPageRequest();
         Page<City> cityList = cityService.findAll(pageRequest);
+
+        Iterator<City> iterator = cityList.iterator();
+        while(iterator.hasNext()){
+            City city = iterator.next();
+            city.setProvinceName(city.getProvince().getName());
+        }
         //返回给前台的数据格式
         PageJson<City> pages = new PageJson<>();
         pages.setCode(0);

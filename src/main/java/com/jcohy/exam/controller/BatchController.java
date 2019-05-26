@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -59,18 +60,23 @@ public class BatchController extends BaseController {
     @GetMapping("/list")
     @ResponseBody
     public PageJson<Batch> all(HttpServletRequest request) {
-        
+
         String pa = request.getParameter("page");
         String limit = request.getParameter("limit");
         PageRequest pageRequest = PageRequest.of(Integer.valueOf(pa) -1,
                 Integer.valueOf(limit));
-        
-        Page<Batch> batchs = batchService.findAll(pageRequest);
+
+        Page<Batch> batches = batchService.findAll(pageRequest);
+        Iterator<Batch> iterator = batches.iterator();
+        while (iterator.hasNext()){
+            Batch batch = iterator.next();
+            batch.setSchoolName(batch.getSchool().getName());
+        }
         PageJson<Batch> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(((int) batchs.getTotalElements()));
-        page.setData(batchs.getContent());
+        page.setCount(((int) batches.getTotalElements()));
+        page.setData(batches.getContent());
         return page;
     }
 
