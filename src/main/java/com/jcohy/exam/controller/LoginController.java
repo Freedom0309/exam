@@ -63,7 +63,7 @@ public class LoginController extends BaseController{
                 if(!login.getPassword().equals(password)){
                     return JsonResult.fail("登录失败,用户名账号密码不匹配");
                 }
-                session.setAttribute("user",login);
+                session.setAttribute("admin",login);
                 return JsonResult.ok().set("returnUrl", "/admin/main");
             }
         } catch (Exception e) {

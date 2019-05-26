@@ -45,6 +45,7 @@ public class JobSeeker implements Serializable {
     @Column(name = "role")
     private Integer role;
 
+    @Column(name = "age")
     private Integer age;
 
 

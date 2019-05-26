@@ -39,7 +39,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> findByUserId(JobSeeker jobSeeker) {
+    public List<Comment> findByUser(JobSeeker jobSeeker) {
         return commentRepository.findByJobSeeker(jobSeeker);
     }
 }

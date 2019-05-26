@@ -30,9 +30,12 @@ public class CommentController {
 
     @PostMapping("/save")
     @ResponseBody
-    public JsonResult save(Comment comment, HttpSession session, HttpServletRequest request){
+    public JsonResult save(Comment comment, Integer userId, HttpServletRequest request){
         try {
-            JobSeeker user = (JobSeeker)session.getAttribute("user");
+            JobSeeker user1 = (JobSeeker)request.getSession().getAttribute("user");
+            Enumeration<String> attributeNames = request.getSession().getAttributeNames();
+
+            JobSeeker user = jobSeekerService.findById(userId);
             comment.setJobSeeker(user);
             comment.setTime(DateUtils.strToDate(DateUtils.getCurrentDateStr()));
             commentService.saveOrUpdate(comment);
@@ -47,8 +50,9 @@ public class CommentController {
 
     @GetMapping("/list")
     @ResponseBody
-    public JsonResult getAll(){
-        List<Comment> lists = commentService.findAll();
+    public JsonResult getAll(Integer id){
+        JobSeeker user = jobSeekerService.findById(id);
+        List<Comment> lists = commentService.findByUser(user);
         return JsonResult.ok().set("data", lists);
     }
 }

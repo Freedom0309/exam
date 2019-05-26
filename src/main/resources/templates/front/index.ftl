@@ -22,6 +22,7 @@
             width: 65px;
             margin: 10px 0px 0px 0px;
         }
+
         .layui-btn {
             background-color: #ffffff;
             color: #444;
@@ -87,7 +88,7 @@
                 <div style="backg  round-color: #F2F2F2;">
                     <div class="layui-row layui-col-space15">
                         <div class="layui-col-md12" id="card">
-                            <#--<div class="layui-card">
+                        <#--<div class="layui-card">
                                 <div class="layui-card-header">标题</div>
                                 <div class="layui-card-body">
                                     内容
@@ -106,7 +107,9 @@
 
                 <div class="">
                     <form id="form1" class="layui-form " lay-filter="form">
-                        <textarea class="layui-textarea" lay-verify="required" name="content" placeholder="请输入内容"></textarea>
+                        <input type="text" name="userId" class="layui-hide userId"/>
+                        <textarea class="layui-textarea" lay-verify="required" name="content"
+                                  placeholder="请输入内容"></textarea>
 
                         <div class="layui-form-item">
                             <div class="layui-input-inline">
@@ -287,37 +290,51 @@
             });
             return false;
         });
+        var user = MyLocalStorage.get("user");
+        if (user != null && user != '') {
+            user = JSON.parse(user);
+            $(".userId").val(user.id);
+        }
         //打开关闭留言板
         $(".btn-comment").on('click', function () {
             if ($(".comment").hasClass("layui-hide")) {
+                var userId = $('.userId').val();
                 $.ajax({
                     type: "GET",
                     dataType: "json",
                     url: "/comment/list",
+                    data: {id: userId},
                     success: function (result) {
-                        if(result.isOk){
-                            createComment(result.data);
-                        }else {
+                        if (result.isOk) {
+                            if (result.data.length > 0)
+                                createComment(result.data);
+                        } else {
                             layer.msg(result.msg, {anim: 6});
                         }
                     }
                 });
                 $(".comment").removeClass("layui-hide");
-            }else{
+            } else {
                 $(".comment").addClass("layui-hide");
             }
         });
         //监听留言
         form.on('submit(save)', function (data) {
+            var userId = $('.userId').val();
+            var content = data.field.content;
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                data: data.field,
+                data: {
+                    content: content,
+                    userId: userId
+                },
                 url: "/comment/save",
                 success: function (result) {
                     if (result.isOk) {
                         console.log(result.data);
-                        createComment(result.data);
+                        if (result.data.length > 0)
+                            createComment(result.data);
                         window.location = window.location.href;
 
                     } else {
@@ -327,21 +344,15 @@
             });
             return false;
         });
-        var user = MyLocalStorage.get("user");
+
         function createComment(data) {
-            user = JSON.parse(user);
             obj = $("#card");
             obj.empty();
             var detailHtml = '';
             for (var i = 0; i < data.length; i++) {
-
                 detailHtml += '<div class="layui-card">';
-                if(user != null && user != ''){
-                detailHtml += '<div class="layui-card-header">'+user.name+'&nbsp;&nbsp;留言时间：&nbsp;&nbsp;'+ data[i].time +'</div>';
-
-                }
-                detailHtml += '<div class="layui-card-body">'+data[i].content+ '</div>';
-
+                detailHtml += '<div class="layui-card-header">' + data[i].jobSeeker.name + '&nbsp;&nbsp;留言时间：&nbsp;&nbsp;' + data[i].time + '</div>';
+                detailHtml += '<div class="layui-card-body">' + data[i].content + '</div>';
                 detailHtml += '</div>';
             }
             obj.append(detailHtml);

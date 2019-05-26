@@ -107,10 +107,9 @@ public class JobSeekerController extends BaseController{
 
     @GetMapping("/update")
     @ResponseBody
-    public JsonResult updateUserInfo(JobSeeker jobSeeker, String birth1){
+    public JsonResult updateUserInfo(JobSeeker jobSeeker){
 
         try {
-            Date str = DateUtils.strToDate(birth1);
 //            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 //            Date date = simpleDateFormat.parse(birth1);
 //            jobSeeker.setBirth(str);

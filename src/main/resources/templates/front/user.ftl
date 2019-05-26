@@ -68,7 +68,7 @@
 			    			<div class="layui-form-item">
 						    	<label class="layui-form-label">帐号</label>
 					    		<div class="layui-input-inline">
-					        		<input id="num" type="text" name="num" required  lay-verify="number" autocomplete="off" class="layui-input">
+					        		<input id="num" type="text" name="num" disabled  lay-verify="number" autocomplete="off" class="layui-input">
 					        	</div>
 					    	</div>
 					    	<div class="layui-form-item">

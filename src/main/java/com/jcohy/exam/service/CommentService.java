@@ -38,9 +38,9 @@ public interface CommentService {
 
     /**
      * 根据用户查询留言
-     * @param user
+     * @param jobSeeker
      * @return
      */
-    List<Comment> findByUserId(JobSeeker jobSeeker);
+    List<Comment> findByUser(JobSeeker jobSeeker);
 
 }

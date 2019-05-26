@@ -26,7 +26,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">帐号</label>
         <div class="layui-input-inline">
-            <input type="text" name="num" lay-verify="required" placeholder="请输入学生学号" value="${(Session.user.num)?c!}"
+            <input type="text" name="num" lay-verify="required" placeholder="请输入学生学号" value="${(Session.admin.num)?c!}"
                    autocomplete="off" class="layui-input" style="color: #d2d2d2!important" disabled>
         </div>
     </div>
