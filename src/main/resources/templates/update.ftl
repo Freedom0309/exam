@@ -34,7 +34,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">原密码</label>
         <div class="layui-input-inline">
-            <input type="text" name="oldPassword" lay-verify="oldPassword" placeholder="请输入原密码" value=""
+            <input type="password" name="oldPassword" lay-verify="oldPassword" placeholder="请输入原密码" value=""
                    autocomplete="off" class="layui-input">
         </div>
     </div>
@@ -42,14 +42,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">新密码</label>
         <div class="layui-input-inline">
-            <input type="text" name="newPassword" lay-verify="newPassword" placeholder="请输入新密码" value=""
+            <input type="password" name="newPassword" lay-verify="newPassword" placeholder="请输入新密码" value=""
                    autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">密码确认</label>
         <div class="layui-input-inline">
-            <input type="text" name="rePassword" lay-verify="rePassword" placeholder="请再次输入密码" value=""
+            <input type="password" name="rePassword" lay-verify="rePassword" placeholder="请再次输入密码" value=""
                    autocomplete="off" class="layui-input">
         </div>
     </div>

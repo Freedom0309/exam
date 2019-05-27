@@ -28,9 +28,9 @@
             <ul class="ht-nav">
                 <li class="ht-nav-item">
                     <a id="updatePassword" style="cursor: pointer"><i class="fa fa-power-off fa-fw"></i>修改密码</a>
-                    <input type="hidden" value="${Session.user.num?c}" id="num">
+                    <input type="hidden" value="${Session.admin.num?c}" id="num">
                     <#--<input type="hidden" value="${Session.role}" id="role">-->
-                    <input type="hidden" value="${Session.user.id}" >
+                    <input type="hidden" value="${Session.admin.id}" >
                 </li>
                 <li class="ht-nav-item">
                     <a href="${ctx!}/logout"><i class="fa fa-power-off fa-fw"></i>注销</a>
@@ -87,8 +87,8 @@
                     <div class="layui-tab-item layui-show">
                         <p style="padding: 10px 15px; margin-bottom: 20px; margin-top: 10px; border:1px solid #ddd;display:inline-block;">
                             陕西高考志愿填报信息管理平台
-                            <span style="padding-left:1em;">用户帐号：${Session.user.num?c}</span>
-                            <span style="padding-left:1em;">用户姓名：${Session.user.name}</span>
+                            <span style="padding-left:1em;">用户帐号：${Session.admin.num?c}</span>
+                            <span style="padding-left:1em;">用户姓名：${Session.admin.name}</span>
                             <#--<span style="padding-left:1em;">角色：${Session.role}</span>-->
                         </p>
                     </div>
